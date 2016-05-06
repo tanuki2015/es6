@@ -1,3 +1,4 @@
+import "babel-polyfill"; //增加babel的api转码支持
 // var [a,b,c] = [1,2,3];
 // console.log(b);
 //
@@ -9,6 +10,7 @@
 // }
 //变量结构赋值的用途
 //交换值
+
 let a = 2,
 b = 6;
 [a,b] = [b,a];
