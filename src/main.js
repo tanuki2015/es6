@@ -1,4 +1,5 @@
-import "babel-polyfill"; //增加babel的api转码支持
+import "babel-polyfill";//增加这一句后，node命令行下就不能用了。
+ //增加babel的api转码支持
 // var [a,b,c] = [1,2,3];
 // console.log(b);
 //
@@ -70,3 +71,5 @@ example5({});
 example5({x:7,y:8});
 
 //map用法和模块暂时略过......
+let [e, f, ...other] = [1,2,3,4,5];
+console.log(e, f, other);
