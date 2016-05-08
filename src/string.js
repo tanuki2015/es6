@@ -44,5 +44,31 @@ let objThis = {
   fn1: function(){console.log(this.id)},
   fn2: () => console.log(this.id)
 }
-objThis.fn1();
-objThis.fn2();
+objThis.fn1(); //objthis
+objThis.fn2(); //windowThis
+
+//其实箭头函数没有this，他就用词法作用域，即外层的this，也即是context
+//上面objThis的上下文是window，所以...
+
+//无法绑定
+let obj3 = {
+    id: "obj333",
+    fn3: objThis.fn2
+};
+objThis.fn2.call(obj3);
+obj3.fn3(); //windowThis
+
+//下面所谓的es6的函数式编程
+const addCurry = x => y => x + y;
+//上面的写法很恶心，不如下面
+//而且这种手动curry如果经常要用，不如写一个curry帮助函数
+//最好的方法是还是用ramda
+
+// function addCurry (x) {
+//     return function (y) {
+//         return x + y;
+//     };
+// };
+
+var inc = addCurry(1);
+console.log(inc(3));
