@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>learn es6</title>
+    <style type="text/css">
+      #demo{height: 200px; width: 200px; background-color: skyblue; margin:200px auto;}
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      
+      shift + option + k
+    </div>
+    <script type="text/javascript">
+    //map的使用场景，给dom元素添加 私有属性 单oDiv被删除，内存自动回收
+      "use strict";
+      let oDiv = document.querySelector("#demo");
+      let mDiv = new WeakMap();
+
+      mDiv.set(oDiv, {timesClicked: 0});
+      let oDivCount = mDiv.get(oDiv);
+
+      oDiv.addEventListener('click', () => {
+        oDivCount.timesClicked++;
+        console.log(oDivCount.timesClicked);
+      });
+
+    </script>
+  </body>
+</html>
