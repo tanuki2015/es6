@@ -1,6 +1,67 @@
 # es6学习笔记：
 
-## 变量定义部分
+## babel的使用
+本项目依赖安装：
+`$ npm install --save-dev babel-cli`
+
+还有需要转码的模块：
+### ES2015转码规则
+`$ npm install --save-dev babel-preset-es2015`
+
+### react转码规则
+`$ npm install --save-dev babel-preset-react`
+
+### ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个
+```
+$ npm install --save-dev babel-preset-stage-0
+$ npm install --save-dev babel-preset-stage-1
+$ npm install --save-dev babel-preset-stage-2
+$ npm install --save-dev babel-preset-stage-3
+```
+需要配置文件，在项目目录下新建 .babelrc
+加入：
+```
+{
+  "presets": [],
+  "plugins": []
+}
+```
+最后给presets加入：
+“es2015”
+
+```
+{ "presets": [
+ "es2015" ],
+ "plugins": [] }
+```
+同样添加其他编码支持：
+```
+  {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-2"
+    ],
+    "plugins": []
+  }
+```
+增加api支持：
+`npm install --save babel-polyfill`
+
+然后在文件顶部导入：
+`import "babel-polyfill";`
+
+最后，
+babel-runtime #
+
+就是内联代码，不用每个文件包含babel的help函数
+```
+$ npm install --save-dev babel-plugin-transform-runtime
+$ npm install --save babel-runtime
+```
+
+
+## es6变量定义部分
 
 1. 变量赋值用let代替var。
 2. 使用严格模式，在调试阶段尽量报错。文件开头加上 `use strict`
