@@ -116,3 +116,39 @@ function f1(obj) {
   // obj.keu = 1;  //  wrong
   const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
 }
+
+//  use class avoid prototype
+class Queue {
+  constructor(contents = [1,2,3]) {
+    this.queue = [...contents];
+  }
+  length() {
+    return this.queue.length;
+  }
+}
+
+const queue = new Queue([5,4,3,2,1]);
+const queue2 = new Queue();
+console.log(queue.length(), queue2);
+
+//  return this to use method chaining
+class QueueChain {
+  constructor(contents = [1,2,3,4,5,6]) {
+    this.queue = [...contents];
+  }
+
+  pop() {
+    this.queue.pop();
+    return this;
+  }
+
+  length() {
+    this.length = this.queue.length;
+    return this;
+  }
+}
+
+const queueCh = new QueueChain();
+console.log(queueCh.pop().length());
+
+// 
