@@ -50,3 +50,20 @@ const obj2 = {
   },
 };
 console.log(obj2.name, obj2.sayHi());
+
+// 对象的属性名可以被计算出来
+const propName = 'name';
+const obj3 = {
+  [propName]: 'nicolas',
+  sayHi() { return 'hi'; },
+};
+console.log(obj3.name);
+for (let prop in obj3) {
+  if (obj3.hasOwnProperty(prop)) {
+    console.log(prop);
+  }
+}
+
+// Object.is()查看对象是否相等
+console.log(Object.is(6, 6));
+console.log(Object.is(NaN, NaN));

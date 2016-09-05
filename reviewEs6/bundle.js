@@ -49,7 +49,11 @@
 
 	'use strict';
 	
+	var _obj;
+	
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	// 交换变量值
 	var a = 1;
@@ -132,6 +136,22 @@
 	  }
 	};
 	console.log(obj2.name, obj2.sayHi());
+	
+	// 对象的属性名可以被计算出来
+	var propName = 'name';
+	var obj3 = (_obj = {}, _defineProperty(_obj, propName, 'nicolas'), _defineProperty(_obj, 'sayHi', function sayHi() {
+	  return 'hi';
+	}), _obj);
+	console.log(obj3.name);
+	for (var prop in obj3) {
+	  if (obj3.hasOwnProperty(prop)) {
+	    console.log(prop);
+	  }
+	}
+	
+	// Object.is()查看对象是否相等
+	console.log(Object.is(6, 6));
+	console.log(Object.is(NaN, NaN));
 
 /***/ }
 /******/ ]);
