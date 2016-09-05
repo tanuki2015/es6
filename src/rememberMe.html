@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+  // 这段代码必须在firefox下面调试，因为google chrome 不允许js操作本地cookie
+
+  function checkIn() {
+    let userName = getCookie('name');
+    if(userName){
+      console.log(`welcome old friend ${userName}`);
+    }else{
+      userName = prompt('请输入用户名：');
+      setCookie('name', userName);
+    }
+  }
+
+    // 写cookie document.cookie = key + '=' + value;
+    function setCookie(key, value) {
+      document.cookie = key +'='+ value;
+    }
+    // 读cookie 格式 cookie: key1=value; key2=value2;
+    function getCookie(key) {
+      if(document.cookie){
+        let rows = document.cookie.split(';');
+        // 分号后面有空格，会导致下面字符串比较出错，浪费几个小时NM...
+        for(let row of rows){
+          let [theKey, theValue] = row.split('=');
+          // 字符串比较前先同一trim一下，否则出错莫名其妙
+          theKey = theKey.trim();
+          if(theKey == key){
+            return theValue;
+          }
+        }
+        return 'this key is not found';
+      }
+    }
+
+    // 为了删除指定名称的cookie，可以将其过期时间设定为一个过去的时间
+    function delCookie(name){
+      let date = new Date();
+      date.setTime(date.getTime() - 10000);
+      document.cookie = name + "=a; expires=" + date.toGMTString();
+}
+
+
+    // let arr = [1,2,3,5,6];
+    //
+    // function isValue(key){
+    //   for(let value of arr){
+    //     if(value === key){
+    //       return value;
+    //     }
+    //   }
+    //   return `not = ${key}`;
+    // }
+
+  </script>
+
+  <body onload=checkIn()>
+      </body>
+</html>

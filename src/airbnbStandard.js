@@ -151,4 +151,113 @@ class QueueChain {
 const queueCh = new QueueChain();
 console.log(queueCh.pop().length());
 
-// 
+// export and import
+
+// import { es6 } from './AirbnbStyleGuide';
+// export default es6;
+//
+//
+// //  导出默认的函数
+// export default function fooo() {}
+
+//  目前不要使用 Iterators and Generators，babel转换还不好
+//  用map...替换Iterators
+// best (use the functional force)
+const sum = numbers.reduce((total, num) => total + num, 0);
+sum === 15;
+
+//  variables
+//  变量永远使用 const， 防止全局污染
+const superPower = new SuperPower();
+
+//  每个变量分开写，方便调试和增改
+const items = getItems();
+const goSportsTeam = true;
+const dragonball = 'z';
+
+//  Group all your consts and then group all your lets.
+const goSportsTeam = true;
+const items = getItems();
+let dragonball;
+let i;
+let length;
+
+//  Assign variables where you need them, but place them in a reasonable place.
+// good
+function checkName(hasName) {
+  if (hasName === 'test') {
+    return false;
+  }
+
+  const name = getName(); //  本行如果放在 188 前就不必要
+
+  if (name === 'test') {
+    this.setName('');
+    return false;
+  }
+
+  return name;
+}
+
+//  var被废弃，而 const 和 let 没有 hoisted, 所以 typeof 不再安全， 有 Temporal Dead Zones (TDZ)
+
+//  判断真假
+// good
+if (name) {
+  // ...stuff...
+}
+
+// good 不是 collection.length > 0
+if (collection.length) {
+  // ...stuff...
+}
+
+//  case的标准写法
+switch (foo) {
+  case 1: {
+    let x = 1;
+    break;
+  }
+  case 2: {
+    const y = 2;
+    break;
+  }
+  case 3: {
+    function f() {}
+    break;
+  }
+  case 4:
+    bar();
+    break;
+  default: {
+    class C {}
+  }
+}
+
+// 控制语句括号前放一个 space， 函数名和参数列表不需要
+// good
+if (isJedi) {
+  fight();
+}
+
+// good
+function fight() {
+  console.log('Swooosh!');
+}
+
+// 圆括号中不要空格， 花括号要空格
+const foo = [1, 2, 3];
+console.log(foo[0]);
+
+// good
+const foo = { clark: 'kent' };
+
+// 一行不要超过100字符
+// good
+$.ajax({
+  method: 'POST',
+  url: 'https://airbnb.com/',
+  data: { name: 'John' },
+})
+  .done(() => console.log('Congratulations!'))
+  .fail(() => console.log('You have failed this city.'));
