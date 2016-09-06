@@ -2,501 +2,109 @@
 1 verbose cli [ '/usr/local/bin/node',
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'install',
-1 verbose cli   'eslint-plugin-jsx-a11y',
-1 verbose cli   '-g' ]
+1 verbose cli   '--save-dev',
+1 verbose cli   'babel-preset-stage-4' ]
 2 info using npm@3.8.6
 3 info using node@v6.0.0
 4 silly loadCurrentTree Starting
 5 silly install loadCurrentTree
-6 silly install readGlobalPackageData
-7 silly fetchPackageMetaData eslint-plugin-jsx-a11y
-8 silly fetchNamedPackageData eslint-plugin-jsx-a11y
-9 silly mapToRegistry name eslint-plugin-jsx-a11y
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData babel-preset-stage-4
+8 silly fetchNamedPackageData babel-preset-stage-4
+9 silly mapToRegistry name babel-preset-stage-4
 10 silly mapToRegistry using default registry
 11 silly mapToRegistry registry https://registry.npmjs.org/
 12 silly mapToRegistry data Result {
-12 silly mapToRegistry   raw: 'eslint-plugin-jsx-a11y',
+12 silly mapToRegistry   raw: 'babel-preset-stage-4',
 12 silly mapToRegistry   scope: null,
-12 silly mapToRegistry   name: 'eslint-plugin-jsx-a11y',
+12 silly mapToRegistry   name: 'babel-preset-stage-4',
 12 silly mapToRegistry   rawSpec: '',
 12 silly mapToRegistry   spec: 'latest',
 12 silly mapToRegistry   type: 'tag' }
-13 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-jsx-a11y
-14 verbose request uri https://registry.npmjs.org/eslint-plugin-jsx-a11y
+13 silly mapToRegistry uri https://registry.npmjs.org/babel-preset-stage-4
+14 verbose request uri https://registry.npmjs.org/babel-preset-stage-4
 15 verbose request no auth needed
-16 info attempt registry request try #1 at 11:39:41
-17 verbose request id 2723e8f9c250ea58
-18 http request GET https://registry.npmjs.org/eslint-plugin-jsx-a11y
-19 http 200 https://registry.npmjs.org/eslint-plugin-jsx-a11y
-20 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-20 verbose headers   etag: '"12R1NU9J3NHZ7WBJUAF4C66P4"',
-20 verbose headers   'content-type': 'application/json',
-20 verbose headers   'content-encoding': 'gzip',
-20 verbose headers   'cache-control': 'max-age=300',
-20 verbose headers   'content-length': '11897',
+16 info attempt registry request try #1 at 16:02:18
+17 verbose request id eac3067c508e5d49
+18 http request GET https://registry.npmjs.org/babel-preset-stage-4
+19 http 404 https://registry.npmjs.org/babel-preset-stage-4
+20 verbose headers { 'content-type': 'application/json',
+20 verbose headers   'cache-control': 'max-age=0',
+20 verbose headers   'content-length': '2',
 20 verbose headers   'accept-ranges': 'bytes',
-20 verbose headers   date: 'Mon, 05 Sep 2016 03:39:42 GMT',
+20 verbose headers   date: 'Tue, 06 Sep 2016 08:02:20 GMT',
 20 verbose headers   via: '1.1 varnish',
 20 verbose headers   age: '0',
 20 verbose headers   connection: 'keep-alive',
-20 verbose headers   'x-served-by': 'cache-lcy1126-LCY',
-20 verbose headers   'x-cache': 'HIT',
-20 verbose headers   'x-cache-hits': '1',
-20 verbose headers   'x-timer': 'S1473046782.775356,VS0,VE180',
+20 verbose headers   'x-served-by': 'cache-lcy1127-LCY',
+20 verbose headers   'x-cache': 'MISS',
+20 verbose headers   'x-cache-hits': '0',
+20 verbose headers   'x-timer': 'S1473148940.182933,VS0,VE701',
 20 verbose headers   vary: 'Accept-Encoding' }
-21 silly get cb [ 200,
-21 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-21 silly get     etag: '"12R1NU9J3NHZ7WBJUAF4C66P4"',
-21 silly get     'content-type': 'application/json',
-21 silly get     'content-encoding': 'gzip',
-21 silly get     'cache-control': 'max-age=300',
-21 silly get     'content-length': '11897',
+21 silly get cb [ 404,
+21 silly get   { 'content-type': 'application/json',
+21 silly get     'cache-control': 'max-age=0',
+21 silly get     'content-length': '2',
 21 silly get     'accept-ranges': 'bytes',
-21 silly get     date: 'Mon, 05 Sep 2016 03:39:42 GMT',
+21 silly get     date: 'Tue, 06 Sep 2016 08:02:20 GMT',
 21 silly get     via: '1.1 varnish',
 21 silly get     age: '0',
 21 silly get     connection: 'keep-alive',
-21 silly get     'x-served-by': 'cache-lcy1126-LCY',
-21 silly get     'x-cache': 'HIT',
-21 silly get     'x-cache-hits': '1',
-21 silly get     'x-timer': 'S1473046782.775356,VS0,VE180',
+21 silly get     'x-served-by': 'cache-lcy1127-LCY',
+21 silly get     'x-cache': 'MISS',
+21 silly get     'x-cache-hits': '0',
+21 silly get     'x-timer': 'S1473148940.182933,VS0,VE701',
 21 silly get     vary: 'Accept-Encoding' } ]
-22 verbose get saving eslint-plugin-jsx-a11y to /Users/feixiao/.npm/registry.npmjs.org/eslint-plugin-jsx-a11y/.cache.json
-23 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-24 silly install normalizeTree
-25 silly loadCurrentTree Finishing
-26 silly loadIdealTree Starting
-27 silly install loadIdealTree
-28 silly cloneCurrentTree Starting
-29 silly install cloneCurrentTreeToIdealTree
-30 silly cloneCurrentTree Finishing
-31 silly loadShrinkwrap Starting
-32 silly install loadShrinkwrap
-33 silly loadShrinkwrap Finishing
-34 silly loadAllDepsIntoIdealTree Starting
-35 silly install loadAllDepsIntoIdealTree
-36 silly resolveWithNewModule eslint-plugin-jsx-a11y@2.2.1 checking installable status
-37 silly cache add args [ 'eslint-plugin-jsx-a11y', null ]
-38 verbose cache add spec eslint-plugin-jsx-a11y
-39 silly cache add parsed spec Result {
-39 silly cache add   raw: 'eslint-plugin-jsx-a11y',
-39 silly cache add   scope: null,
-39 silly cache add   name: 'eslint-plugin-jsx-a11y',
-39 silly cache add   rawSpec: '',
-39 silly cache add   spec: 'latest',
-39 silly cache add   type: 'tag' }
-40 silly addNamed eslint-plugin-jsx-a11y@latest
-41 verbose addNamed "latest" is being treated as a dist-tag for eslint-plugin-jsx-a11y
-42 info addNameTag [ 'eslint-plugin-jsx-a11y', 'latest' ]
-43 silly mapToRegistry name eslint-plugin-jsx-a11y
-44 silly mapToRegistry using default registry
-45 silly mapToRegistry registry https://registry.npmjs.org/
-46 silly mapToRegistry data Result {
-46 silly mapToRegistry   raw: 'eslint-plugin-jsx-a11y',
-46 silly mapToRegistry   scope: null,
-46 silly mapToRegistry   name: 'eslint-plugin-jsx-a11y',
-46 silly mapToRegistry   rawSpec: '',
-46 silly mapToRegistry   spec: 'latest',
-46 silly mapToRegistry   type: 'tag' }
-47 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-jsx-a11y
-48 verbose addNameTag registry:https://registry.npmjs.org/eslint-plugin-jsx-a11y not in flight; fetching
-49 verbose get https://registry.npmjs.org/eslint-plugin-jsx-a11y not expired, no request
-50 silly addNameTag next cb for eslint-plugin-jsx-a11y with tag latest
-51 silly addNamed eslint-plugin-jsx-a11y@2.2.1
-52 verbose addNamed "2.2.1" is a plain semver version for eslint-plugin-jsx-a11y
-53 silly mapToRegistry name eslint-plugin-jsx-a11y
-54 silly mapToRegistry using default registry
-55 silly mapToRegistry registry https://registry.npmjs.org/
-56 silly mapToRegistry data Result {
-56 silly mapToRegistry   raw: 'eslint-plugin-jsx-a11y',
-56 silly mapToRegistry   scope: null,
-56 silly mapToRegistry   name: 'eslint-plugin-jsx-a11y',
-56 silly mapToRegistry   rawSpec: '',
-56 silly mapToRegistry   spec: 'latest',
-56 silly mapToRegistry   type: 'tag' }
-57 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-jsx-a11y
-58 verbose addRemoteTarball https://registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-2.2.1.tgz not in flight; adding
-59 verbose addRemoteTarball [ 'https://registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-2.2.1.tgz',
-59 verbose addRemoteTarball   '1919fab212cd73a95eab2ac12a028793f37e4196' ]
-60 info retry fetch attempt 1 at 11:39:43
-61 info attempt registry request try #1 at 11:39:43
-62 http fetch GET https://registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-2.2.1.tgz
-63 http fetch 200 https://registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-2.2.1.tgz
-64 silly fetchAndShaCheck shasum 1919fab212cd73a95eab2ac12a028793f37e4196
-65 verbose addTmpTarball /var/folders/_y/xyfrxwm51sj4twfp21ylprm00000gn/T/npm-2018-a87c3d42/registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-2.2.1.tgz not in flight; adding
-66 verbose addTmpTarball already have metadata; skipping unpack for eslint-plugin-jsx-a11y@2.2.1
-67 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-68 silly cache afterAdd eslint-plugin-jsx-a11y@2.2.1
-69 verbose afterAdd /Users/feixiao/.npm/eslint-plugin-jsx-a11y/2.2.1/package/package.json not in flight; writing
-70 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-71 verbose afterAdd /Users/feixiao/.npm/eslint-plugin-jsx-a11y/2.2.1/package/package.json written
-72 silly fetchNamedPackageData damerau-levenshtein
-73 silly mapToRegistry name damerau-levenshtein
-74 silly mapToRegistry using default registry
-75 silly mapToRegistry registry https://registry.npmjs.org/
-76 silly mapToRegistry data Result {
-76 silly mapToRegistry   raw: 'damerau-levenshtein',
-76 silly mapToRegistry   scope: null,
-76 silly mapToRegistry   name: 'damerau-levenshtein',
-76 silly mapToRegistry   rawSpec: '',
-76 silly mapToRegistry   spec: 'latest',
-76 silly mapToRegistry   type: 'tag' }
-77 silly mapToRegistry uri https://registry.npmjs.org/damerau-levenshtein
-78 silly fetchNamedPackageData jsx-ast-utils
-79 silly mapToRegistry name jsx-ast-utils
-80 silly mapToRegistry using default registry
-81 silly mapToRegistry registry https://registry.npmjs.org/
-82 silly mapToRegistry data Result {
-82 silly mapToRegistry   raw: 'jsx-ast-utils',
-82 silly mapToRegistry   scope: null,
-82 silly mapToRegistry   name: 'jsx-ast-utils',
-82 silly mapToRegistry   rawSpec: '',
-82 silly mapToRegistry   spec: 'latest',
-82 silly mapToRegistry   type: 'tag' }
-83 silly mapToRegistry uri https://registry.npmjs.org/jsx-ast-utils
-84 silly fetchNamedPackageData object-assign
-85 silly mapToRegistry name object-assign
-86 silly mapToRegistry using default registry
-87 silly mapToRegistry registry https://registry.npmjs.org/
-88 silly mapToRegistry data Result {
-88 silly mapToRegistry   raw: 'object-assign',
-88 silly mapToRegistry   scope: null,
-88 silly mapToRegistry   name: 'object-assign',
-88 silly mapToRegistry   rawSpec: '',
-88 silly mapToRegistry   spec: 'latest',
-88 silly mapToRegistry   type: 'tag' }
-89 silly mapToRegistry uri https://registry.npmjs.org/object-assign
-90 verbose request uri https://registry.npmjs.org/damerau-levenshtein
-91 verbose request no auth needed
-92 info attempt registry request try #1 at 11:39:44
-93 http request GET https://registry.npmjs.org/damerau-levenshtein
-94 verbose request uri https://registry.npmjs.org/object-assign
-95 verbose request no auth needed
-96 info attempt registry request try #1 at 11:39:44
-97 verbose etag "8ENFMBKFVJZJH8K26N9UQOH2W"
-98 http request GET https://registry.npmjs.org/object-assign
-99 verbose request uri https://registry.npmjs.org/jsx-ast-utils
-100 verbose request no auth needed
-101 info attempt registry request try #1 at 11:39:44
-102 verbose etag "BUFYSL5BTDU7BWYNKZOQWSKE4"
-103 http request GET https://registry.npmjs.org/jsx-ast-utils
-104 http 200 https://registry.npmjs.org/damerau-levenshtein
-105 verbose headers { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
-105 verbose headers   etag: '"D3A690C249MSE7WL1XW3RVFAT"',
-105 verbose headers   'content-type': 'application/json',
-105 verbose headers   'content-encoding': 'gzip',
-105 verbose headers   'cache-control': 'max-age=300',
-105 verbose headers   'content-length': '1160',
-105 verbose headers   'accept-ranges': 'bytes',
-105 verbose headers   date: 'Mon, 05 Sep 2016 03:39:44 GMT',
-105 verbose headers   via: '1.1 varnish',
-105 verbose headers   age: '0',
-105 verbose headers   connection: 'keep-alive',
-105 verbose headers   'x-served-by': 'cache-lcy1126-LCY',
-105 verbose headers   'x-cache': 'HIT',
-105 verbose headers   'x-cache-hits': '1',
-105 verbose headers   'x-timer': 'S1473046784.465157,VS0,VE367',
-105 verbose headers   vary: 'Accept-Encoding' }
-106 silly get cb [ 200,
-106 silly get   { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
-106 silly get     etag: '"D3A690C249MSE7WL1XW3RVFAT"',
-106 silly get     'content-type': 'application/json',
-106 silly get     'content-encoding': 'gzip',
-106 silly get     'cache-control': 'max-age=300',
-106 silly get     'content-length': '1160',
-106 silly get     'accept-ranges': 'bytes',
-106 silly get     date: 'Mon, 05 Sep 2016 03:39:44 GMT',
-106 silly get     via: '1.1 varnish',
-106 silly get     age: '0',
-106 silly get     connection: 'keep-alive',
-106 silly get     'x-served-by': 'cache-lcy1126-LCY',
-106 silly get     'x-cache': 'HIT',
-106 silly get     'x-cache-hits': '1',
-106 silly get     'x-timer': 'S1473046784.465157,VS0,VE367',
-106 silly get     vary: 'Accept-Encoding' } ]
-107 verbose get saving damerau-levenshtein to /Users/feixiao/.npm/registry.npmjs.org/damerau-levenshtein/.cache.json
-108 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-109 silly resolveWithNewModule damerau-levenshtein@1.0.0 checking installable status
-110 silly cache add args [ 'damerau-levenshtein@^1.0.0', null ]
-111 verbose cache add spec damerau-levenshtein@^1.0.0
-112 silly cache add parsed spec Result {
-112 silly cache add   raw: 'damerau-levenshtein@^1.0.0',
-112 silly cache add   scope: null,
-112 silly cache add   name: 'damerau-levenshtein',
-112 silly cache add   rawSpec: '^1.0.0',
-112 silly cache add   spec: '>=1.0.0 <2.0.0',
-112 silly cache add   type: 'range' }
-113 silly addNamed damerau-levenshtein@>=1.0.0 <2.0.0
-114 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for damerau-levenshtein
-115 silly addNameRange { name: 'damerau-levenshtein',
-115 silly addNameRange   range: '>=1.0.0 <2.0.0',
-115 silly addNameRange   hasData: false }
-116 silly mapToRegistry name damerau-levenshtein
-117 silly mapToRegistry using default registry
-118 silly mapToRegistry registry https://registry.npmjs.org/
-119 silly mapToRegistry data Result {
-119 silly mapToRegistry   raw: 'damerau-levenshtein',
-119 silly mapToRegistry   scope: null,
-119 silly mapToRegistry   name: 'damerau-levenshtein',
-119 silly mapToRegistry   rawSpec: '',
-119 silly mapToRegistry   spec: 'latest',
-119 silly mapToRegistry   type: 'tag' }
-120 silly mapToRegistry uri https://registry.npmjs.org/damerau-levenshtein
-121 verbose addNameRange registry:https://registry.npmjs.org/damerau-levenshtein not in flight; fetching
-122 verbose get https://registry.npmjs.org/damerau-levenshtein not expired, no request
-123 silly addNameRange number 2 { name: 'damerau-levenshtein',
-123 silly addNameRange   range: '>=1.0.0 <2.0.0',
-123 silly addNameRange   hasData: true }
-124 silly addNameRange versions [ 'damerau-levenshtein', [ '0.1.2', '0.1.3', '1.0.0' ] ]
-125 silly addNamed damerau-levenshtein@1.0.0
-126 verbose addNamed "1.0.0" is a plain semver version for damerau-levenshtein
-127 silly mapToRegistry name damerau-levenshtein
-128 silly mapToRegistry using default registry
-129 silly mapToRegistry registry https://registry.npmjs.org/
-130 silly mapToRegistry data Result {
-130 silly mapToRegistry   raw: 'damerau-levenshtein',
-130 silly mapToRegistry   scope: null,
-130 silly mapToRegistry   name: 'damerau-levenshtein',
-130 silly mapToRegistry   rawSpec: '',
-130 silly mapToRegistry   spec: 'latest',
-130 silly mapToRegistry   type: 'tag' }
-131 silly mapToRegistry uri https://registry.npmjs.org/damerau-levenshtein
-132 verbose addRemoteTarball https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.0.tgz not in flight; adding
-133 verbose addRemoteTarball [ 'https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.0.tgz',
-133 verbose addRemoteTarball   '548153c98e464a925ab5cc27746c40e88185f19a' ]
-134 info retry fetch attempt 1 at 11:39:45
-135 info attempt registry request try #1 at 11:39:45
-136 http fetch GET https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.0.tgz
-137 http 304 https://registry.npmjs.org/object-assign
-138 verbose headers { date: 'Mon, 05 Sep 2016 03:39:45 GMT',
-138 verbose headers   via: '1.1 varnish',
-138 verbose headers   'cache-control': 'max-age=300',
-138 verbose headers   etag: '"8ENFMBKFVJZJH8K26N9UQOH2W"',
-138 verbose headers   age: '107',
-138 verbose headers   connection: 'keep-alive',
-138 verbose headers   'x-served-by': 'cache-lcy1128-LCY',
-138 verbose headers   'x-cache': 'HIT',
-138 verbose headers   'x-cache-hits': '7',
-138 verbose headers   'x-timer': 'S1473046785.241483,VS0,VE0',
-138 verbose headers   vary: 'Accept-Encoding' }
-139 silly get cb [ 304,
-139 silly get   { date: 'Mon, 05 Sep 2016 03:39:45 GMT',
-139 silly get     via: '1.1 varnish',
-139 silly get     'cache-control': 'max-age=300',
-139 silly get     etag: '"8ENFMBKFVJZJH8K26N9UQOH2W"',
-139 silly get     age: '107',
-139 silly get     connection: 'keep-alive',
-139 silly get     'x-served-by': 'cache-lcy1128-LCY',
-139 silly get     'x-cache': 'HIT',
-139 silly get     'x-cache-hits': '7',
-139 silly get     'x-timer': 'S1473046785.241483,VS0,VE0',
-139 silly get     vary: 'Accept-Encoding' } ]
-140 verbose etag https://registry.npmjs.org/object-assign from cache
-141 verbose get saving object-assign to /Users/feixiao/.npm/registry.npmjs.org/object-assign/.cache.json
-142 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-143 http fetch 200 https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.0.tgz
-144 silly fetchAndShaCheck shasum 548153c98e464a925ab5cc27746c40e88185f19a
-145 verbose addTmpTarball /var/folders/_y/xyfrxwm51sj4twfp21ylprm00000gn/T/npm-2018-a87c3d42/registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.0.tgz not in flight; adding
-146 verbose addTmpTarball already have metadata; skipping unpack for damerau-levenshtein@1.0.0
-147 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-148 silly resolveWithNewModule object-assign@4.1.0 checking installable status
-149 silly cache add args [ 'object-assign@^4.0.1', null ]
-150 verbose cache add spec object-assign@^4.0.1
-151 silly cache add parsed spec Result {
-151 silly cache add   raw: 'object-assign@^4.0.1',
-151 silly cache add   scope: null,
-151 silly cache add   name: 'object-assign',
-151 silly cache add   rawSpec: '^4.0.1',
-151 silly cache add   spec: '>=4.0.1 <5.0.0',
-151 silly cache add   type: 'range' }
-152 silly addNamed object-assign@>=4.0.1 <5.0.0
-153 verbose addNamed ">=4.0.1 <5.0.0" is a valid semver range for object-assign
-154 silly addNameRange { name: 'object-assign',
-154 silly addNameRange   range: '>=4.0.1 <5.0.0',
-154 silly addNameRange   hasData: false }
-155 silly mapToRegistry name object-assign
-156 silly mapToRegistry using default registry
-157 silly mapToRegistry registry https://registry.npmjs.org/
-158 silly mapToRegistry data Result {
-158 silly mapToRegistry   raw: 'object-assign',
-158 silly mapToRegistry   scope: null,
-158 silly mapToRegistry   name: 'object-assign',
-158 silly mapToRegistry   rawSpec: '',
-158 silly mapToRegistry   spec: 'latest',
-158 silly mapToRegistry   type: 'tag' }
-159 silly mapToRegistry uri https://registry.npmjs.org/object-assign
-160 verbose addNameRange registry:https://registry.npmjs.org/object-assign not in flight; fetching
-161 verbose get https://registry.npmjs.org/object-assign not expired, no request
-162 silly addNameRange number 2 { name: 'object-assign', range: '>=4.0.1 <5.0.0', hasData: true }
-163 silly addNameRange versions [ 'object-assign',
-163 silly addNameRange   [ '0.1.0',
-163 silly addNameRange     '0.1.1',
-163 silly addNameRange     '0.1.2',
-163 silly addNameRange     '0.2.0',
-163 silly addNameRange     '0.2.1',
-163 silly addNameRange     '0.2.2',
-163 silly addNameRange     '0.3.0',
-163 silly addNameRange     '0.3.1',
-163 silly addNameRange     '0.4.0',
-163 silly addNameRange     '1.0.0',
-163 silly addNameRange     '2.0.0',
-163 silly addNameRange     '3.0.0',
-163 silly addNameRange     '2.1.1',
-163 silly addNameRange     '4.0.0',
-163 silly addNameRange     '4.0.1',
-163 silly addNameRange     '4.1.0' ] ]
-164 silly addNamed object-assign@4.1.0
-165 verbose addNamed "4.1.0" is a plain semver version for object-assign
-166 silly cache afterAdd object-assign@4.1.0
-167 verbose afterAdd /Users/feixiao/.npm/object-assign/4.1.0/package/package.json not in flight; writing
-168 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-169 verbose afterAdd /Users/feixiao/.npm/object-assign/4.1.0/package/package.json written
-170 silly cache afterAdd damerau-levenshtein@1.0.0
-171 verbose afterAdd /Users/feixiao/.npm/damerau-levenshtein/1.0.0/package/package.json not in flight; writing
-172 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-173 verbose afterAdd /Users/feixiao/.npm/damerau-levenshtein/1.0.0/package/package.json written
-174 http 200 https://registry.npmjs.org/jsx-ast-utils
-175 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-175 verbose headers   etag: '"71A7ITZ9W0MQ1OCVP63UPCY72"',
-175 verbose headers   'content-type': 'application/json',
-175 verbose headers   'content-encoding': 'gzip',
-175 verbose headers   'cache-control': 'max-age=300',
-175 verbose headers   'content-length': '4087',
-175 verbose headers   'accept-ranges': 'bytes',
-175 verbose headers   date: 'Mon, 05 Sep 2016 03:39:45 GMT',
-175 verbose headers   via: '1.1 varnish',
-175 verbose headers   age: '0',
-175 verbose headers   connection: 'keep-alive',
-175 verbose headers   'x-served-by': 'cache-lcy1130-LCY',
-175 verbose headers   'x-cache': 'HIT',
-175 verbose headers   'x-cache-hits': '1',
-175 verbose headers   'x-timer': 'S1473046785.241357,VS0,VE698',
-175 verbose headers   vary: 'Accept-Encoding' }
-176 silly get cb [ 200,
-176 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-176 silly get     etag: '"71A7ITZ9W0MQ1OCVP63UPCY72"',
-176 silly get     'content-type': 'application/json',
-176 silly get     'content-encoding': 'gzip',
-176 silly get     'cache-control': 'max-age=300',
-176 silly get     'content-length': '4087',
-176 silly get     'accept-ranges': 'bytes',
-176 silly get     date: 'Mon, 05 Sep 2016 03:39:45 GMT',
-176 silly get     via: '1.1 varnish',
-176 silly get     age: '0',
-176 silly get     connection: 'keep-alive',
-176 silly get     'x-served-by': 'cache-lcy1130-LCY',
-176 silly get     'x-cache': 'HIT',
-176 silly get     'x-cache-hits': '1',
-176 silly get     'x-timer': 'S1473046785.241357,VS0,VE698',
-176 silly get     vary: 'Accept-Encoding' } ]
-177 verbose get saving jsx-ast-utils to /Users/feixiao/.npm/registry.npmjs.org/jsx-ast-utils/.cache.json
-178 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-179 silly resolveWithNewModule jsx-ast-utils@1.3.1 checking installable status
-180 silly cache add args [ 'jsx-ast-utils@^1.0.0', null ]
-181 verbose cache add spec jsx-ast-utils@^1.0.0
-182 silly cache add parsed spec Result {
-182 silly cache add   raw: 'jsx-ast-utils@^1.0.0',
-182 silly cache add   scope: null,
-182 silly cache add   name: 'jsx-ast-utils',
-182 silly cache add   rawSpec: '^1.0.0',
-182 silly cache add   spec: '>=1.0.0 <2.0.0',
-182 silly cache add   type: 'range' }
-183 silly addNamed jsx-ast-utils@>=1.0.0 <2.0.0
-184 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for jsx-ast-utils
-185 silly addNameRange { name: 'jsx-ast-utils',
-185 silly addNameRange   range: '>=1.0.0 <2.0.0',
-185 silly addNameRange   hasData: false }
-186 silly mapToRegistry name jsx-ast-utils
-187 silly mapToRegistry using default registry
-188 silly mapToRegistry registry https://registry.npmjs.org/
-189 silly mapToRegistry data Result {
-189 silly mapToRegistry   raw: 'jsx-ast-utils',
-189 silly mapToRegistry   scope: null,
-189 silly mapToRegistry   name: 'jsx-ast-utils',
-189 silly mapToRegistry   rawSpec: '',
-189 silly mapToRegistry   spec: 'latest',
-189 silly mapToRegistry   type: 'tag' }
-190 silly mapToRegistry uri https://registry.npmjs.org/jsx-ast-utils
-191 verbose addNameRange registry:https://registry.npmjs.org/jsx-ast-utils not in flight; fetching
-192 verbose get https://registry.npmjs.org/jsx-ast-utils not expired, no request
-193 silly addNameRange number 2 { name: 'jsx-ast-utils', range: '>=1.0.0 <2.0.0', hasData: true }
-194 silly addNameRange versions [ 'jsx-ast-utils',
-194 silly addNameRange   [ '1.0.0',
-194 silly addNameRange     '1.0.1',
-194 silly addNameRange     '1.1.0',
-194 silly addNameRange     '1.1.1',
-194 silly addNameRange     '1.2.0',
-194 silly addNameRange     '1.2.1',
-194 silly addNameRange     '1.3.0',
-194 silly addNameRange     '1.3.1' ] ]
-195 silly addNamed jsx-ast-utils@1.3.1
-196 verbose addNamed "1.3.1" is a plain semver version for jsx-ast-utils
-197 silly mapToRegistry name jsx-ast-utils
-198 silly mapToRegistry using default registry
-199 silly mapToRegistry registry https://registry.npmjs.org/
-200 silly mapToRegistry data Result {
-200 silly mapToRegistry   raw: 'jsx-ast-utils',
-200 silly mapToRegistry   scope: null,
-200 silly mapToRegistry   name: 'jsx-ast-utils',
-200 silly mapToRegistry   rawSpec: '',
-200 silly mapToRegistry   spec: 'latest',
-200 silly mapToRegistry   type: 'tag' }
-201 silly mapToRegistry uri https://registry.npmjs.org/jsx-ast-utils
-202 verbose addRemoteTarball https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.3.1.tgz not in flight; adding
-203 verbose addRemoteTarball [ 'https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.3.1.tgz',
-203 verbose addRemoteTarball   '14313c5c50da5b0c47020af5d1560c17e781a05a' ]
-204 info retry fetch attempt 1 at 11:39:46
-205 info attempt registry request try #1 at 11:39:46
-206 http fetch GET https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.3.1.tgz
-207 http fetch 200 https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.3.1.tgz
-208 silly fetchAndShaCheck shasum 14313c5c50da5b0c47020af5d1560c17e781a05a
-209 verbose addTmpTarball /var/folders/_y/xyfrxwm51sj4twfp21ylprm00000gn/T/npm-2018-a87c3d42/registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.3.1.tgz not in flight; adding
-210 verbose addTmpTarball already have metadata; skipping unpack for jsx-ast-utils@1.3.1
-211 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-212 silly cache afterAdd jsx-ast-utils@1.3.1
-213 verbose afterAdd /Users/feixiao/.npm/jsx-ast-utils/1.3.1/package/package.json not in flight; writing
-214 verbose correctMkdir /Users/feixiao/.npm correctMkdir not in flight; initializing
-215 verbose afterAdd /Users/feixiao/.npm/jsx-ast-utils/1.3.1/package/package.json written
-216 silly loadAllDepsIntoIdealTree Finishing
-217 silly idealTree:prePrune lib
-217 silly idealTree:prePrune └─┬ eslint-plugin-jsx-a11y@2.2.1
-217 silly idealTree:prePrune   ├── damerau-levenshtein@1.0.0
-217 silly idealTree:prePrune   ├── jsx-ast-utils@1.3.1
-217 silly idealTree:prePrune   └── object-assign@4.1.0
-218 silly loadIdealTree Finishing
-219 silly currentTree lib
-220 silly idealTree lib
-220 silly idealTree └─┬ eslint-plugin-jsx-a11y@2.2.1
-220 silly idealTree   ├── damerau-levenshtein@1.0.0
-220 silly idealTree   ├── jsx-ast-utils@1.3.1
-220 silly idealTree   └── object-assign@4.1.0
-221 silly generateActionsToTake Starting
-222 silly install generateActionsToTake
-223 warn checkPermissions Missing write access to /usr/local/lib/node_modules
-224 silly rollbackFailedOptional Starting
-225 silly rollbackFailedOptional Finishing
-226 silly runTopLevelLifecycles Starting
-227 silly runTopLevelLifecycles Finishing
-228 silly install printInstalled
-229 warn eslint-plugin-jsx-a11y@2.2.1 requires a peer of eslint@^2.10.2 || 3.x but none was installed.
-230 verbose stack Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
-230 verbose stack     at Error (native)
-231 verbose cwd /Users/feixiao/myProject/es6/reviewEs6
-232 error Darwin 15.6.0
-233 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "eslint-plugin-jsx-a11y" "-g"
-234 error node v6.0.0
-235 error npm  v3.8.6
-236 error path /usr/local/lib/node_modules
-237 error code EACCES
-238 error errno -13
-239 error syscall access
-240 error Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
-240 error     at Error (native)
-240 error  { Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
-240 error     at Error (native)
-240 error   errno: -13,
-240 error   code: 'EACCES',
-240 error   syscall: 'access',
-240 error   path: '/usr/local/lib/node_modules' }
-241 error Please try running this command again as root/Administrator.
-242 verbose exit [ -13, true ]
+22 silly fetchPackageMetaData Error: Registry returned 404 for GET on https://registry.npmjs.org/babel-preset-stage-4
+22 silly fetchPackageMetaData     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+22 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+22 silly fetchPackageMetaData     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+22 silly fetchPackageMetaData     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:199:22)
+22 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+22 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+22 silly fetchPackageMetaData     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+22 silly fetchPackageMetaData     at emitOne (events.js:101:20)
+22 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+22 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:963:12)
+22 silly fetchPackageMetaData  error for babel-preset-stage-4 { Error: Registry returned 404 for GET on https://registry.npmjs.org/babel-preset-stage-4
+22 silly fetchPackageMetaData     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+22 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+22 silly fetchPackageMetaData     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+22 silly fetchPackageMetaData     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:199:22)
+22 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+22 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+22 silly fetchPackageMetaData     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+22 silly fetchPackageMetaData     at emitOne (events.js:101:20)
+22 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+22 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:963:12) pkgid: 'babel-preset-stage-4', statusCode: 404, code: 'E404' }
+23 silly rollbackFailedOptional Starting
+24 silly rollbackFailedOptional Finishing
+25 silly runTopLevelLifecycles Starting
+26 silly runTopLevelLifecycles Finishing
+27 silly install printInstalled
+28 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/babel-preset-stage-4
+28 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+28 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+28 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+28 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:199:22)
+28 verbose stack     at emitTwo (events.js:106:13)
+28 verbose stack     at Request.emit (events.js:191:7)
+28 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+28 verbose stack     at emitOne (events.js:101:20)
+28 verbose stack     at Request.emit (events.js:188:7)
+28 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:963:12)
+29 verbose statusCode 404
+30 verbose pkgid babel-preset-stage-4
+31 verbose cwd /Users/feixiao/myProject/es6/reviewEs6
+32 error Darwin 15.6.0
+33 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "--save-dev" "babel-preset-stage-4"
+34 error node v6.0.0
+35 error npm  v3.8.6
+36 error code E404
+37 error 404 Registry returned 404 for GET on https://registry.npmjs.org/babel-preset-stage-4
+38 error 404
+39 error 404 'babel-preset-stage-4' is not in the npm registry.
+40 error 404 You should bug the author to publish it (or use the name yourself!)
+41 error 404 Note that you can also install from a
+42 error 404 tarball, folder, http url, or git url.
+43 verbose exit [ 1, true ]

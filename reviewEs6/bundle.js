@@ -113,7 +113,7 @@
 	objectArgs();
 	
 	// spread用法,1调用时展开数组
-	var arr1 = [23, 45, 66, 78, 1, 9];
+	var arr1 = [23, 45, 66, 78, 1, 66, 78, 1, 1, 9];
 	console.log(Math.min.apply(Math, arr1));
 	
 	// 2定义函数时, 用数组接受所有内容
@@ -143,15 +143,67 @@
 	  return 'hi';
 	}), _obj);
 	console.log(obj3.name);
-	for (var prop in obj3) {
-	  if (obj3.hasOwnProperty(prop)) {
-	    console.log(prop);
+	// for (let prop in obj3) {
+	//   if (obj3.hasOwnProperty(prop)) {
+	//     console.log(prop);
+	//   }
+	// }
+	// 换成Object.keys方法实现，(eslint不报错)
+	var objKey = { name: 'xxff', age: 99 };
+	var objKeyArr = Object.keys(objKey);
+	objKeyArr.forEach(function (key) {
+	  return console.log(key);
+	});
+	
+	console.log('-------------Object的keys, values, entries 方法----------------');
+	var obj = { a: 1, b: 2, c: 3 };
+	var keys = Object.keys;
+	var values = Object.values;
+	var entries = Object.entries; // 从Object对象取到这三个方法
+	// 好吧，只有stage-4才支持values，entries，目前只出了stage-3
+	
+	var _iteratorNormalCompletion = true;
+	var _didIteratorError = false;
+	var _iteratorError = undefined;
+	
+	try {
+	  for (var _iterator = keys(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	    var key = _step.value;
+	
+	    console.log(key);
+	  }
+	
+	  // for (let value of values(obj)){
+	  //   console.log(value);
+	  // }
+	  //
+	  // for (let entry of entries(obj)){
+	  //   console.log(entry);
+	  // }
+	
+	  // Object.is()查看对象是否相等
+	} catch (err) {
+	  _didIteratorError = true;
+	  _iteratorError = err;
+	} finally {
+	  try {
+	    if (!_iteratorNormalCompletion && _iterator.return) {
+	      _iterator.return();
+	    }
+	  } finally {
+	    if (_didIteratorError) {
+	      throw _iteratorError;
+	    }
 	  }
 	}
 	
-	// Object.is()查看对象是否相等
 	console.log(Object.is(6, 6));
 	console.log(Object.is(NaN, NaN));
+	
+	// 利用set Array.from 实现数组去重
+	var arr1Set = new Set(arr1); // set结构去重
+	var distinctArr = Array.from(arr1Set); // Array.from转换为数组
+	console.log(distinctArr);
 
 /***/ }
 /******/ ]);

@@ -33,7 +33,7 @@ function objectArgs(name = 'fff', sayHi = () => console.log('hi')) {
 objectArgs();
 
 // spread用法,1调用时展开数组
-const arr1 = [23, 45, 66, 78, 1, 9];
+const arr1 = [23, 45, 66, 78, 1, 66, 78, 1, 1, 9];
 console.log(Math.min(...arr1));
 
 // 2定义函数时, 用数组接受所有内容
@@ -58,12 +58,38 @@ const obj3 = {
   sayHi() { return 'hi'; },
 };
 console.log(obj3.name);
-for (let prop in obj3) {
-  if (obj3.hasOwnProperty(prop)) {
-    console.log(prop);
-  }
+// for (let prop in obj3) {
+//   if (obj3.hasOwnProperty(prop)) {
+//     console.log(prop);
+//   }
+// }
+// 换成Object.keys方法实现，(eslint不报错)
+const objKey = { name: 'xxff', age: 99 };
+const objKeyArr = Object.keys(objKey);
+objKeyArr.forEach((key) => console.log(key));
+
+console.log('-------------Object的keys, values, entries 方法----------------');
+const obj = { a: 1, b: 2, c: 3 };
+let { keys, values, entries } = Object; // 从Object对象取到这三个方法
+// 好吧，只有stage-4才支持values，entries，目前只出了stage-3
+
+for (let key of keys(obj)){
+  console.log(key);
 }
+
+// for (let value of values(obj)){
+//   console.log(value);
+// }
+//
+// for (let entry of entries(obj)){
+//   console.log(entry);
+// }
 
 // Object.is()查看对象是否相等
 console.log(Object.is(6, 6));
 console.log(Object.is(NaN, NaN));
+
+// 利用set Array.from 实现数组去重
+const arr1Set = new Set(arr1);  // set结构去重
+const distinctArr = Array.from(arr1Set);  // Array.from转换为数组
+console.log(distinctArr);
