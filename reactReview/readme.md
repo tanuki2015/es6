@@ -33,4 +33,21 @@ class HelloMessage extends Component {
 render(<HelloMessage name="John" />, document.getElementById('root'));
 ```
 
+#### 添加一点交互,onClick事件
+```
+class HelloMessage extends Component {
+  alertMe() {
+    alert('点我啊！点我啊！点我啊！');
+  }
+
+  render() {
+    return <div onClick={this.alertMe} >Hello {this.props.name} </div>;
+  }
+}
+
+render(<HelloMessage name="John" />, document.getElementById('root'));
+
+```
+
+
 state 表示组件当前的状态，需要时自动重新渲染，也可调用this.setState()触发。

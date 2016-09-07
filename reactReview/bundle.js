@@ -81,14 +81,18 @@
 	  }
 
 	  _createClass(HelloMessage, [{
+	    key: 'alertMe',
+	    value: function alertMe() {
+	      alert('点我啊！点我啊！点我啊！');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        {
-	          __source: {
+	        { onClick: this.alertMe, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 12
+	            lineNumber: 15
 	          }
 	        },
 	        'Hello ',
@@ -106,7 +110,7 @@
 
 	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John', __source: {
 	    fileName: _jsxFileName,
-	    lineNumber: 17
+	    lineNumber: 20
 	  }
 	}), document.getElementById('root'));
 

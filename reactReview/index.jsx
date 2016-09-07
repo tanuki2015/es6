@@ -8,8 +8,11 @@ import { render } from 'react-dom';
 // );
 
 class HelloMessage extends Component {
+  alertMe() {
+    alert('点我啊！点我啊！点我啊！');
+  }
   render() {
-    return <div>Hello {this.props.name} </div>;
+    return <div onClick={this.alertMe} >Hello {this.props.name} </div>;
   }
 }
 
