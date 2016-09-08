@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // import { render } from 'react-dom';
 
-class HelloComponent extends Component {
+class SubMessage extends Component {
   render() {
-    return <div>react I'm come back!</div>;
+    return <h2>我是一个纸组件</h2>;
   }
 }
 
-export default HelloComponent;
+export default SubMessage;

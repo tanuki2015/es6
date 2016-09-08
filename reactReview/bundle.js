@@ -56,6 +56,10 @@
 
 	var _reactDom = __webpack_require__(34);
 
+	var _myComponet = __webpack_require__(172);
+
+	var _myComponet2 = _interopRequireDefault(_myComponet);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64,13 +68,25 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// import HelloComponent from './myComponet.jsx';
-
 	// render(
 	//   <HelloComponent />,
 	//   document.getElementById('root')
 	// );
 
+	// 第一版 组件
+	// class HelloMessage extends Component {
+	//   alertMe() {
+	//     alert('点我啊！点我啊！点我啊！');
+	//   }
+	//   render() {
+	//     return <div onClick={this.alertMe} >Hello {this.props.name} </div>;
+	//   }
+	// }
+	//
+	// // 加载组件到 DOM 元素 mountNode
+	// render(<HelloMessage name="John" />, document.getElementById('root'));
+
+	// 第二版 嵌套组件
 	var HelloMessage = function (_Component) {
 	  _inherits(HelloMessage, _Component);
 
@@ -81,23 +97,34 @@
 	  }
 
 	  _createClass(HelloMessage, [{
-	    key: 'alertMe',
-	    value: function alertMe() {
-	      alert('点我啊！点我啊！点我啊！');
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { onClick: this.alertMe, __source: {
+	        {
+	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 15
+	            lineNumber: 27
 	          }
 	        },
-	        'Hello ',
-	        this.props.name,
-	        ' '
+	        _react2.default.createElement(
+	          'h1',
+	          {
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 28
+	            }
+	          },
+	          ' Hello ',
+	          this.props.name,
+	          ' '
+	        ),
+	        _react2.default.createElement(_myComponet2.default, {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 29
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -105,12 +132,9 @@
 	  return HelloMessage;
 	}(_react.Component);
 
-	// 加载组件到 DOM 元素 mountNode
-
-
 	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John', __source: {
 	    fileName: _jsxFileName,
-	    lineNumber: 20
+	    lineNumber: 34
 	  }
 	}), document.getElementById('root'));
 
@@ -21484,6 +21508,63 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var _jsxFileName = '/Users/feixiao/myProject/es6/reactReview/myComponet.jsx';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// import { render } from 'react-dom';
+
+	var SubMessage = function (_Component) {
+	  _inherits(SubMessage, _Component);
+
+	  function SubMessage() {
+	    _classCallCheck(this, SubMessage);
+
+	    return _possibleConstructorReturn(this, (SubMessage.__proto__ || Object.getPrototypeOf(SubMessage)).apply(this, arguments));
+	  }
+
+	  _createClass(SubMessage, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'h2',
+	        {
+	          __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 6
+	          }
+	        },
+	        '我是一个纸组件'
+	      );
+	    }
+	  }]);
+
+	  return SubMessage;
+	}(_react.Component);
+
+	exports.default = SubMessage;
 
 /***/ }
 /******/ ]);
