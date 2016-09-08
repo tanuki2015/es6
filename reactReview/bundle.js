@@ -86,14 +86,62 @@
 	// // 加载组件到 DOM 元素 mountNode
 	// render(<HelloMessage name="John" />, document.getElementById('root'));
 
-	// 第二版 嵌套组件
+	/*  第二版 嵌套组件
+	*   问题：
+	*   1. return返回的顶层元素只能有一个，而且必须用（）包起来，格式如下
+	*   2. 组件名字必须首字母大写，写子组件时一定注意，否则渲染出来是字符串。
+	*   3. 一个文件只能定义一个组件，不像es5的写法可以多个。
+	*/
+	// class HelloMessage extends Component {
+	//   render() {
+	//     return (
+	//       <div>
+	//         <h1> Hello {this.props.name} </h1>
+	//         <SubMessage />
+	//       </div>);
+	//   }
+	// }
+	//
+	// render(<HelloMessage name="John" />, document.getElementById('root'));
+
+	/* 第三版 循环展开组件
+	*   render函数中正常写函数，可以引用组件
+	*   return的时候用花括号引用数组，会自动展开
+	*   当子组件时数组是，它需要有一个key的属性，所以在push进数组是加入key=XXX+i 以示区别
+	*/
+	// class HelloMessage extends Component {
+	//   render() {
+	//     const messages = [];
+	//     for (let i = 0; i < 10; i++) {
+	//       messages.push(<SubMessage key={'subMessage'+i} />);
+	//     }
+	//     return (
+	//       <div>
+	//         <h1> Hello {this.props.name} </h1>
+	//         {messages}
+	//       </div>);
+	//   }
+	// }
+	//
+	// render(<HelloMessage name="John" />, document.getElementById('root'));
+
+	/*  state
+	*   用构造函数初始化state
+	*   用this.state.XXX引用
+	*/
 	var HelloMessage = function (_Component) {
 	  _inherits(HelloMessage, _Component);
 
-	  function HelloMessage() {
+	  function HelloMessage(props) {
 	    _classCallCheck(this, HelloMessage);
 
-	    return _possibleConstructorReturn(this, (HelloMessage.__proto__ || Object.getPrototypeOf(HelloMessage)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (HelloMessage.__proto__ || Object.getPrototypeOf(HelloMessage)).call(this, props));
+
+	    _this.state = {
+	      isVisable: true,
+	      titleMessage: 'hello, react!'
+	    };
+	    return _this;
 	  }
 
 	  _createClass(HelloMessage, [{
@@ -104,7 +152,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 27
+	            lineNumber: 76
 	          }
 	        },
 	        _react2.default.createElement(
@@ -112,19 +160,25 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 28
+	              lineNumber: 77
 	            }
 	          },
 	          ' Hello ',
 	          this.props.name,
 	          ' '
 	        ),
-	        _react2.default.createElement(_myComponet2.default, {
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 29
-	          }
-	        })
+	        _react2.default.createElement(
+	          'h2',
+	          {
+	            __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 78
+	            }
+	          },
+	          ' ',
+	          this.state.titleMessage,
+	          ' '
+	        )
 	      );
 	    }
 	  }]);
@@ -134,7 +188,7 @@
 
 	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John', __source: {
 	    fileName: _jsxFileName,
-	    lineNumber: 34
+	    lineNumber: 82
 	  }
 	}), document.getElementById('root'));
 
