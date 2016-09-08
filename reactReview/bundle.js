@@ -128,6 +128,9 @@
 	/*  state
 	*   用构造函数初始化state
 	*   用this.state.XXX引用
+	*   最重要的一点，添加点击事件的时候用箭头函数，才能保证this是正确的
+	*   onClick={() => this.clickHandle()}
+	*   或者用es7的::来绑定 onClick={::this.clickHandle}
 	*/
 	var HelloMessage = function (_Component) {
 	  _inherits(HelloMessage, _Component);
@@ -145,22 +148,31 @@
 	  }
 
 	  _createClass(HelloMessage, [{
+	    key: 'clickHandle',
+	    value: function clickHandle() {
+	      this.setState({
+	        isVisable: !this.state.isVisable
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var styleObj = {
+	        display: this.state.isVisable ? 'block' : 'none'
+	      };
 	      return _react2.default.createElement(
 	        'div',
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 76
+	            lineNumber: 87
 	          }
 	        },
 	        _react2.default.createElement(
 	          'h1',
-	          {
-	            __source: {
+	          { onClick: this.clickHandle.bind(this), __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 77
+	              lineNumber: 88
 	            }
 	          },
 	          ' Hello ',
@@ -169,10 +181,9 @@
 	        ),
 	        _react2.default.createElement(
 	          'h2',
-	          {
-	            __source: {
+	          { style: styleObj, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 78
+	              lineNumber: 89
 	            }
 	          },
 	          ' ',
@@ -188,7 +199,7 @@
 
 	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John', __source: {
 	    fileName: _jsxFileName,
-	    lineNumber: 82
+	    lineNumber: 93
 	  }
 	}), document.getElementById('root'));
 
