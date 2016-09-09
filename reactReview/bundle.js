@@ -162,58 +162,146 @@
 	/*  第五版传递props给子组件
 	*   问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
 	*/
-	var HelloMessage = function (_Component) {
-	  _inherits(HelloMessage, _Component);
+	// class HelloMessage extends Component {
+	//   constructor(props) {
+	//     super(props);
+	//   }
+	//   //  配置好后，state可以简单的这样初始化了
+	//   state = {
+	//     isVisable: true,
+	//     titleMessage: 'hello, react!',
+	//     clickCount: 0,
+	//     subMessage: [
+	//       '从父组件',
+	//       '传递给子组件',
+	//       '的一个字符串数组'
+	//     ],
+	//   };
+	//
+	//   clickHandle() {
+	//     this.setState({
+	//       isVisable: !this.state.isVisable,
+	//       clickCount: this.state.clickCount + 1,
+	//     });
+	//   }
+	//   render() {
+	//     const styleObj = {
+	//       display: this.state.isVisable ? 'block' : 'none',
+	//     };
+	//     return (
+	//       <div>
+	//         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
+	//         <SubMessage msg={this.state.subMessage}/>
+	//       </div>);
+	//   }
+	// }
+	//
+	// render(<HelloMessage name="John" />, document.getElementById('root'));
 
-	  function HelloMessage(props) {
-	    _classCallCheck(this, HelloMessage);
+	/* 表单和事件
+	*   关于事件的代码，可以发现，当元素中使用了value时，就必须使用onChange方法。那多个元素设置了value，
+	* 就得有多个onChange事件，这显然太笨了，于是，就有了下面的用ref获取元素节点的方法，可以一次直接
+	* 得到这个元素及他的所有属性。
+	*/
+	var MyFrom = function (_Component) {
+	  _inherits(MyFrom, _Component);
 
-	    var _this = _possibleConstructorReturn(this, (HelloMessage.__proto__ || Object.getPrototypeOf(HelloMessage)).call(this, props));
+	  function MyFrom() {
+	    var _ref;
 
-	    _this.state = {
-	      isVisable: true,
-	      titleMessage: 'hello, react!',
-	      clickCount: 0,
-	      subMessage: ['从父组件', '传递给子组件', '的一个字符串数组']
-	    };
-	    return _this;
-	  }
-	  //  配置好后，state可以简单的这样初始化了
+	    var _temp, _this, _ret;
 
+	    _classCallCheck(this, MyFrom);
 
-	  _createClass(HelloMessage, [{
-	    key: 'clickHandle',
-	    value: function clickHandle() {
-	      this.setState({
-	        isVisable: !this.state.isVisable,
-	        clickCount: this.state.clickCount + 1
-	      });
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
 	    }
-	  }, {
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyFrom.__proto__ || Object.getPrototypeOf(MyFrom)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      inputValue: 'input value',
+	      selectValue: 'A',
+	      radioValue: 'B',
+	      textareValue: 'some text here...'
+	    }, _this.handleSubmit = function (e) {
+	      e.preventDefault(); // 停掉默认提交表单的动作
+	      console.log('form submitting...');
+	      console.log(e);
+	    }, _this.handleInput = function (e) {
+	      _this.setState({
+	        inputValue: e.target.value
+	      });
+	    }, _this.handleSelect = function (e) {
+	      _this.setState({
+	        selectValue: e.target.value
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(MyFrom, [{
 	    key: 'render',
 	    value: function render() {
-	      var styleObj = {
-	        display: this.state.isVisable ? 'block' : 'none'
-	      };
 	      return _react2.default.createElement(
-	        'div',
-	        null,
+	        'form',
+	        { onSubmit: this.handleSubmit },
+	        _react2.default.createElement('input', { type: 'text', value: this.state.inputValue, onChange: this.handleInput }),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
-	          'h1',
-	          { onClick: this.clickHandle.bind(this) },
-	          ' Hello ',
-	          this.props.name,
-	          ' '
+	          'select',
+	          { value: this.state.selectValue, onChange: this.handleSelect },
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'A' },
+	            'A'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'B' },
+	            'B'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'C' },
+	            'C'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'D' },
+	            'D'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: 'E' },
+	            'E'
+	          )
 	        ),
-	        _react2.default.createElement(_myComponet2.default, { msg: this.state.subMessage })
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'radio button'
+	        ),
+	        _react2.default.createElement('input', { name: 'goodRadio', type: 'radio', value: 'A' }),
+	        _react2.default.createElement('input', { name: 'goodRadio', type: 'radio', value: 'B' }),
+	        _react2.default.createElement('input', { name: 'goodRadio', type: 'radio', value: 'C' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { name: 'goodRadio', type: 'checkbox', value: 'A' }),
+	        _react2.default.createElement('input', { name: 'goodRadio', type: 'checkbox', value: 'B' }),
+	        _react2.default.createElement('input', { name: 'goodRadio', type: 'checkbox', value: 'C' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('textarea', { value: this.state.textareValue }),
+	        _react2.default.createElement(
+	          'button',
+	          { type: 'submit' },
+	          '确认提交'
+	        )
 	      );
 	    }
 	  }]);
 
-	  return HelloMessage;
+	  return MyFrom;
 	}(_react.Component);
 
-	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John' }), document.getElementById('root'));
+	(0, _reactDom.render)(_react2.default.createElement(MyFrom, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */

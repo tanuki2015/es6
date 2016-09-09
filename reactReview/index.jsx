@@ -98,38 +98,99 @@ import SubMessage from './myComponet.jsx';
 /*  第五版传递props给子组件
 *   问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
 */
-class HelloMessage extends Component {
-  constructor(props) {
-    super(props);
-  }
-  //  配置好后，state可以简单的这样初始化了
-  state = {
-    isVisable: true,
-    titleMessage: 'hello, react!',
-    clickCount: 0,
-    subMessage: [
-      '从父组件',
-      '传递给子组件',
-      '的一个字符串数组'
-    ],
-  };
+// class HelloMessage extends Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   //  配置好后，state可以简单的这样初始化了
+//   state = {
+//     isVisable: true,
+//     titleMessage: 'hello, react!',
+//     clickCount: 0,
+//     subMessage: [
+//       '从父组件',
+//       '传递给子组件',
+//       '的一个字符串数组'
+//     ],
+//   };
+//
+//   clickHandle() {
+//     this.setState({
+//       isVisable: !this.state.isVisable,
+//       clickCount: this.state.clickCount + 1,
+//     });
+//   }
+//   render() {
+//     const styleObj = {
+//       display: this.state.isVisable ? 'block' : 'none',
+//     };
+//     return (
+//       <div>
+//         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
+//         <SubMessage msg={this.state.subMessage}/>
+//       </div>);
+//   }
+// }
+//
+// render(<HelloMessage name="John" />, document.getElementById('root'));
 
-  clickHandle() {
-    this.setState({
-      isVisable: !this.state.isVisable,
-      clickCount: this.state.clickCount + 1,
-    });
+/* 表单和事件
+*   关于事件的代码，可以发现，当元素中使用了value时，就必须使用onChange方法。那多个元素设置了value，
+* 就得有多个onChange事件，这显然太笨了，于是，就有了下面的用ref获取元素节点的方法，可以一次直接
+* 得到这个元素及他的所有属性。
+*/
+class MyFrom extends Component {
+  state = {
+    inputValue: 'input value',
+    selectValue: 'A',
+    radioValue: 'B',
+    textareValue: 'some text here...',
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault(); // 停掉默认提交表单的动作
+    console.log('form submitting...');
+    console.log(e);
+  }
+
+  handleInput = (e) => {
+    this.setState({
+      inputValue: e.target.value,
+    })
+  }
+
+  handleSelect = (e) => {
+    this.setState({
+      selectValue: e.target.value,
+    })
+  }
+
   render() {
-    const styleObj = {
-      display: this.state.isVisable ? 'block' : 'none',
-    };
     return (
-      <div>
-        <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
-        <SubMessage msg={this.state.subMessage}/>
-      </div>);
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
+        <br/>
+        <select value={this.state.selectValue} onChange={this.handleSelect}>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+        </select>
+        <br/>
+        <p>radio button</p>
+        <input name="goodRadio" type="radio" value="A"/>
+        <input name="goodRadio" type="radio" value="B"/>
+        <input name="goodRadio" type="radio" value="C"/>
+        <br/>
+          <input name="goodRadio" type="checkbox" value="A"/>
+          <input name="goodRadio" type="checkbox" value="B"/>
+          <input name="goodRadio" type="checkbox" value="C"/>
+        <br/>
+        <textarea value={this.state.textareValue}></textarea>
+        <button type="submit">确认提交</button>
+      </form>
+    )
   }
 }
-
-render(<HelloMessage name="John" />, document.getElementById('root'));
+render(<MyFrom />, document.getElementById('root'));
