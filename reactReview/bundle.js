@@ -162,7 +162,7 @@
 	// render(<HelloMessage name="John" />, document.getElementById('root'));
 
 	/*  第五版传递props给子组件
-	*
+	*   问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
 	*/
 	var HelloMessage = function (_Component) {
 	  _inherits(HelloMessage, _Component);
@@ -200,23 +200,24 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 126
+	            lineNumber: 127
 	          }
 	        },
 	        _react2.default.createElement(
 	          'h1',
 	          { onClick: this.clickHandle.bind(this), __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 127
+	              lineNumber: 128
 	            }
 	          },
 	          ' Hello ',
 	          this.props.name,
 	          ' '
 	        ),
-	        _react2.default.createElement(_myComponet2.default, { msg: this.state.subMessage, __source: {
+	        _react2.default.createElement(_myComponet2.default, {
+	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 128
+	            lineNumber: 129
 	          }
 	        })
 	      );
@@ -228,7 +229,7 @@
 
 	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John', __source: {
 	    fileName: _jsxFileName,
-	    lineNumber: 132
+	    lineNumber: 134
 	  }
 	}), document.getElementById('root'));
 
@@ -21670,6 +21671,10 @@
 
 	  return SubMessage;
 	}(_react.Component);
+
+	SubMessage.defaultProps = {
+	  msg: ['没有传参，我是默认的参数']
+	};
 
 	exports.default = SubMessage;
 

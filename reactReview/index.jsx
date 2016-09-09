@@ -96,7 +96,7 @@ import SubMessage from './myComponet.jsx';
 // render(<HelloMessage name="John" />, document.getElementById('root'));
 
 /*  第五版传递props给子组件
-*
+*   问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
 */
 class HelloMessage extends Component {
   constructor(props) {
@@ -112,6 +112,7 @@ class HelloMessage extends Component {
       ],
     };
   }
+
   clickHandle() {
     this.setState({
       isVisable: !this.state.isVisable,
@@ -125,8 +126,9 @@ class HelloMessage extends Component {
     return (
       <div>
         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
-        <SubMessage msg={this.state.subMessage}/>
+        <SubMessage />
       </div>);
   }
 }
+
 render(<HelloMessage name="John" />, document.getElementById('root'));
