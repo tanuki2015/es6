@@ -10,7 +10,7 @@ class SubMessage extends Component {
     const message = [];
     let keyValue = 0;
     this.props.msg.forEach((item) => {
-      message.push(<h3 key={keyValue++}>{item}</h3>);
+      message.push(<p key={keyValue++}> 子组件说: {item}</p>);
     });
     return <div>{message}</div>;
   }

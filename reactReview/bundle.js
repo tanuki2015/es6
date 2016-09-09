@@ -203,7 +203,7 @@
 	          this.props.name,
 	          ' '
 	        ),
-	        _react2.default.createElement(_myComponet2.default, null)
+	        _react2.default.createElement(_myComponet2.default, { msg: this.state.subMessage })
 	      );
 	    }
 	  }]);
@@ -21626,8 +21626,9 @@
 	      var keyValue = 0;
 	      this.props.msg.forEach(function (item) {
 	        message.push(_react2.default.createElement(
-	          'h3',
+	          'p',
 	          { key: keyValue++ },
+	          ' 子组件说: ',
 	          item
 	        ));
 	      });

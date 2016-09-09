@@ -10,6 +10,20 @@ class SubMessage extends Component {
     msg: ['没有传参，我是默认的参数'],
   };
 ```
+然后，default State可以这样写了：
+```
+state = {
+  isVisable: true,
+  titleMessage: 'hello, react!',
+  clickCount: 0,
+  subMessage: [
+    '从父组件',
+    '传递给子组件',
+    '的一个字符串数组'
+  ],
+};
+```
+
 
 1. 需要webpack和babel插件，相应的配置在webpack.config.js和.babelrc中。
 2. 必须导入React对象和render方法如下：

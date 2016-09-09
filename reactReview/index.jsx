@@ -101,17 +101,18 @@ import SubMessage from './myComponet.jsx';
 class HelloMessage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isVisable: true,
-      titleMessage: 'hello, react!',
-      clickCount: 0,
-      subMessage: [
-        '从父组件',
-        '传递给子组件',
-        '的一个字符串数组'
-      ],
-    };
   }
+  //  配置好后，state可以简单的这样初始化了
+  state = {
+    isVisable: true,
+    titleMessage: 'hello, react!',
+    clickCount: 0,
+    subMessage: [
+      '从父组件',
+      '传递给子组件',
+      '的一个字符串数组'
+    ],
+  };
 
   clickHandle() {
     this.setState({
@@ -126,7 +127,7 @@ class HelloMessage extends Component {
     return (
       <div>
         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
-        <SubMessage />
+        <SubMessage msg={this.state.subMessage}/>
       </div>);
   }
 }
