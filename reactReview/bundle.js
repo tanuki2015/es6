@@ -46,8 +46,6 @@
 
 	'use strict';
 
-	var _jsxFileName = '/Users/feixiao/myProject/es6/reactReview/index.jsx';
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -197,29 +195,15 @@
 	      };
 	      return _react2.default.createElement(
 	        'div',
-	        {
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 127
-	          }
-	        },
+	        null,
 	        _react2.default.createElement(
 	          'h1',
-	          { onClick: this.clickHandle.bind(this), __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 128
-	            }
-	          },
+	          { onClick: this.clickHandle.bind(this) },
 	          ' Hello ',
 	          this.props.name,
 	          ' '
 	        ),
-	        _react2.default.createElement(_myComponet2.default, {
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 129
-	          }
-	        })
+	        _react2.default.createElement(_myComponet2.default, null)
 	      );
 	    }
 	  }]);
@@ -227,11 +211,7 @@
 	  return HelloMessage;
 	}(_react.Component);
 
-	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John', __source: {
-	    fileName: _jsxFileName,
-	    lineNumber: 134
-	  }
-	}), document.getElementById('root'));
+	(0, _reactDom.render)(_react2.default.createElement(HelloMessage, { name: 'John' }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21613,7 +21593,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var _jsxFileName = '/Users/feixiao/myProject/es6/reactReview/myComponet.jsx';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21648,34 +21627,30 @@
 	      this.props.msg.forEach(function (item) {
 	        message.push(_react2.default.createElement(
 	          'h3',
-	          { key: keyValue++, __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 9
-	            }
-	          },
+	          { key: keyValue++ },
 	          item
 	        ));
 	      });
 	      return _react2.default.createElement(
 	        'div',
-	        {
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 11
-	          }
-	        },
+	        null,
 	        message
 	      );
 	    }
+	    // 这个地方报错，在webpack.config.js配置query，presets中加入"stage-0"，问题解决
+
 	  }]);
 
 	  return SubMessage;
 	}(_react.Component);
+	// 默认的props只能写在类的外面才能通过编译，而且他的key必须跟传入的props的name一样，value类型也要一样。
+	// SubMessage.defaultProps = {
+	//   msg: ['没有传参，我是默认的参数'],
+	// };
 
 	SubMessage.defaultProps = {
 	  msg: ['没有传参，我是默认的参数']
 	};
-
 	exports.default = SubMessage;
 
 /***/ }

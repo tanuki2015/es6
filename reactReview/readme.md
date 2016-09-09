@@ -1,5 +1,16 @@
 ## 复习react
 
+### 解决webpack编译时不支持class的静态属性的问题
+1. 安装babel-plugin-transform-class-properties。
+2. 在webpack.config.js配置query，presets中加入"stage-0"。
+```
+class SubMessage extends Component {
+  // 这个地方报错，在webpack.config.js配置query，presets中加入"stage-0"，问题解决
+  static defaultProps = {
+    msg: ['没有传参，我是默认的参数'],
+  };
+```
+
 1. 需要webpack和babel插件，相应的配置在webpack.config.js和.babelrc中。
 2. 必须导入React对象和render方法如下：
 ```
