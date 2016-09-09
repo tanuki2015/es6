@@ -59,12 +59,44 @@ import SubMessage from './myComponet.jsx';
 //
 // render(<HelloMessage name="John" />, document.getElementById('root'));
 
-/*  state
+/*  第四版state
 *   用构造函数初始化state
 *   用this.state.XXX引用
 *   最重要的一点，添加点击事件的时候用箭头函数，才能保证this是正确的
 *   onClick={() => this.clickHandle()}
 *   或者用es7的::来绑定 onClick={::this.clickHandle}
+*/
+// class HelloMessage extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       isVisable: true,
+//       titleMessage: 'hello, react!',
+//       clickCount: 0,
+//     };
+//   }
+//   clickHandle() {
+//     this.setState({
+//       isVisable: !this.state.isVisable,
+//       clickCount: this.state.clickCount + 1,
+//     });
+//   }
+//   render() {
+//     const styleObj = {
+//       display: this.state.isVisable ? 'block' : 'none',
+//     };
+//     return (
+//       <div>
+//         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
+//         <h3> 一共点击了{this.state.clickCount}次！</h3>
+//         <h2 style={styleObj} > {this.state.titleMessage} </h2>
+//       </div>);
+//   }
+// }
+// render(<HelloMessage name="John" />, document.getElementById('root'));
+
+/*  第五版传递props给子组件
+*
 */
 class HelloMessage extends Component {
   constructor(props) {
@@ -72,11 +104,18 @@ class HelloMessage extends Component {
     this.state = {
       isVisable: true,
       titleMessage: 'hello, react!',
+      clickCount: 0,
+      subMessage: [
+        '从父组件',
+        '传递给子组件',
+        '的一个字符串数组'
+      ],
     };
   }
   clickHandle() {
     this.setState({
       isVisable: !this.state.isVisable,
+      clickCount: this.state.clickCount + 1,
     });
   }
   render() {
@@ -86,7 +125,7 @@ class HelloMessage extends Component {
     return (
       <div>
         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
-        <h2 style={styleObj} > {this.state.titleMessage} </h2>
+        <SubMessage msg={this.state.subMessage}/>
       </div>);
   }
 }

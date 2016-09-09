@@ -3,7 +3,12 @@ import React, { Component } from 'react';
 
 class SubMessage extends Component {
   render() {
-    return <h2>我是一个纸组件</h2>;
+    const message = [];
+    let keyValue = 0;
+    this.props.msg.forEach((item) => {
+      message.push(<h3 key={keyValue++}>{item}</h3>);
+    });
+    return <div>{message}</div>;
   }
 }
 
