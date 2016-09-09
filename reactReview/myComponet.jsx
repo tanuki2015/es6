@@ -6,6 +6,9 @@ class SubMessage extends Component {
   static defaultProps = {
     msg: ['没有传参，我是默认的参数'],
   };
+  static propTypes = {
+    msg: React.PropTypes.array.isRequired
+  }
   render() {
     const message = [];
     let keyValue = 0;

@@ -178,6 +178,8 @@
 	    };
 	    return _this;
 	  }
+	  //  配置好后，state可以简单的这样初始化了
+
 
 	  _createClass(HelloMessage, [{
 	    key: 'clickHandle',
@@ -21621,6 +21623,8 @@
 
 	  _createClass(SubMessage, [{
 	    key: 'render',
+
+	    // 这个地方报错，在webpack.config.js配置query，presets中加入"stage-0"，问题解决
 	    value: function render() {
 	      var message = [];
 	      var keyValue = 0;
@@ -21638,8 +21642,6 @@
 	        message
 	      );
 	    }
-	    // 这个地方报错，在webpack.config.js配置query，presets中加入"stage-0"，问题解决
-
 	  }]);
 
 	  return SubMessage;
@@ -21651,6 +21653,9 @@
 
 	SubMessage.defaultProps = {
 	  msg: ['没有传参，我是默认的参数']
+	};
+	SubMessage.propTypes = {
+	  msg: _react2.default.PropTypes.array.isRequired
 	};
 	exports.default = SubMessage;
 
