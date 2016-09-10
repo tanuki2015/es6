@@ -54,9 +54,9 @@
 
 	var _reactDom = __webpack_require__(34);
 
-	var _myComponet = __webpack_require__(172);
+	var _myCompLi = __webpack_require__(172);
 
-	var _myComponet2 = _interopRequireDefault(_myComponet);
+	var _myCompLi2 = _interopRequireDefault(_myCompLi);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,244 +64,65 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // 写几个小例子练手
+	// 1 输出一个列表
 
-	// render(
-	//   <HelloComponent />,
-	//   document.getElementById('root')
-	// );
 
-	// 第一版 组件
-	// class HelloMessage extends Component {
-	//   alertMe() {
-	//     alert('点我啊！点我啊！点我啊！');
-	//   }
-	//   render() {
-	//     return <div onClick={this.alertMe} >Hello {this.props.name} </div>;
-	//   }
-	// }
-	//
-	// // 加载组件到 DOM 元素 mountNode
-	// render(<HelloMessage name="John" />, document.getElementById('root'));
-
-	/*  第二版 嵌套组件
-	*   问题：
-	*   1. return返回的顶层元素只能有一个，而且必须用（）包起来，格式如下
-	*   2. 组件名字必须首字母大写，写子组件时一定注意，否则渲染出来是字符串。
-	*   3. 一个文件只能定义一个组件，不像es5的写法可以多个。
-	*/
-	// class HelloMessage extends Component {
+	// class RepeatArray extends Component{
 	//   render() {
 	//     return (
 	//       <div>
-	//         <h1> Hello {this.props.name} </h1>
-	//         <SubMessage />
-	//       </div>);
+	//         <RepeatLi>
+	//           <span>hello</span>
+	//           <span>world</span>
+	//         </RepeatLi>
+	//       </div>
+	//     );
 	//   }
 	// }
 	//
-	// render(<HelloMessage name="John" />, document.getElementById('root'));
+	// render(<RepeatArray />, document.getElementById('root'));
 
-	/* 第三版 循环展开组件
-	*   render函数中正常写函数，可以引用组件
-	*   return的时候用花括号引用数组，会自动展开
-	*   当子组件时数组是，它需要有一个key的属性，所以在push进数组是加入key=XXX+i 以示区别
-	*/
-	// class HelloMessage extends Component {
-	//   render() {
-	//     const messages = [];
-	//     for (let i = 0; i < 10; i++) {
-	//       messages.push(<SubMessage key={'subMessage'+i} />);
-	//     }
-	//     return (
-	//       <div>
-	//         <h1> Hello {this.props.name} </h1>
-	//         {messages}
-	//       </div>);
-	//   }
-	// }
-	//
-	// render(<HelloMessage name="John" />, document.getElementById('root'));
+	// 2 事件焦点
+	var Event = function (_Component) {
+	  _inherits(Event, _Component);
 
-	/*  第四版state
-	*   用构造函数初始化state
-	*   用this.state.XXX引用
-	*   最重要的一点，添加点击事件的时候用箭头函数，才能保证this是正确的
-	*   onClick={() => this.clickHandle()}
-	*   或者用es7的::来绑定 onClick={::this.clickHandle}
-	*/
-	// class HelloMessage extends Component {
-	//   constructor(props) {
-	//     super(props);
-	//     this.state = {
-	//       isVisable: true,
-	//       titleMessage: 'hello, react!',
-	//       clickCount: 0,
-	//     };
-	//   }
-	//   clickHandle() {
-	//     this.setState({
-	//       isVisable: !this.state.isVisable,
-	//       clickCount: this.state.clickCount + 1,
-	//     });
-	//   }
-	//   render() {
-	//     const styleObj = {
-	//       display: this.state.isVisable ? 'block' : 'none',
-	//     };
-	//     return (
-	//       <div>
-	//         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
-	//         <h3> 一共点击了{this.state.clickCount}次！</h3>
-	//         <h2 style={styleObj} > {this.state.titleMessage} </h2>
-	//       </div>);
-	//   }
-	// }
-	// render(<HelloMessage name="John" />, document.getElementById('root'));
-
-	/*  第五版传递props给子组件
-	*   问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
-	*/
-	// class HelloMessage extends Component {
-	//   constructor(props) {
-	//     super(props);
-	//   }
-	//   //  配置好后，state可以简单的这样初始化了
-	//   state = {
-	//     isVisable: true,
-	//     titleMessage: 'hello, react!',
-	//     clickCount: 0,
-	//     subMessage: [
-	//       '从父组件',
-	//       '传递给子组件',
-	//       '的一个字符串数组'
-	//     ],
-	//   };
-	//
-	//   clickHandle() {
-	//     this.setState({
-	//       isVisable: !this.state.isVisable,
-	//       clickCount: this.state.clickCount + 1,
-	//     });
-	//   }
-	//   render() {
-	//     const styleObj = {
-	//       display: this.state.isVisable ? 'block' : 'none',
-	//     };
-	//     return (
-	//       <div>
-	//         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
-	//         <SubMessage msg={this.state.subMessage}/>
-	//       </div>);
-	//   }
-	// }
-	//
-	// render(<HelloMessage name="John" />, document.getElementById('root'));
-
-	/* 表单和事件
-	*   关于事件的代码，可以发现，当元素中使用了value时，就必须使用onChange方法。那多个元素设置了value，
-	* 就得有多个onChange事件，这显然太笨了，于是，就有了下面的用ref获取元素节点的方法，可以一次直接
-	* 得到这个元素及他的所有属性。
-	*/
-	var MyFrom = function (_Component) {
-	  _inherits(MyFrom, _Component);
-
-	  function MyFrom() {
+	  function Event() {
 	    var _ref;
 
 	    var _temp, _this, _ret;
 
-	    _classCallCheck(this, MyFrom);
+	    _classCallCheck(this, Event);
 
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyFrom.__proto__ || Object.getPrototypeOf(MyFrom)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-	      inputValue: 'input value',
-	      selectValue: 'A',
-	      radioValue: 'B',
-	      textareValue: 'some text here...'
-	    }, _this.handleSubmit = function (e) {
-	      e.preventDefault(); // 停掉默认提交表单的动作
-	      console.log('form submitting...');
-	      console.log(e);
-	    }, _this.handleInput = function (e) {
-	      _this.setState({
-	        inputValue: e.target.value
-	      });
-	    }, _this.handleSelect = function (e) {
-	      _this.setState({
-	        selectValue: e.target.value
-	      });
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Event.__proto__ || Object.getPrototypeOf(Event)).call.apply(_ref, [this].concat(args))), _this), _this.clickHandle = function (e) {
+	      _this.refs.myText.focus();
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
-	  _createClass(MyFrom, [{
+	  _createClass(Event, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'form',
-	        { onSubmit: this.handleSubmit },
-	        _react2.default.createElement('input', { type: 'text', value: this.state.inputValue, onChange: this.handleInput }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'select',
-	          { value: this.state.selectValue, onChange: this.handleSelect },
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'A' },
-	            'A'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'B' },
-	            'B'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'C' },
-	            'C'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'D' },
-	            'D'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: 'E' },
-	            'E'
-	          )
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'radio button'
-	        ),
-	        _react2.default.createElement('input', { name: 'goodRadio', type: 'radio', value: 'A' }),
-	        _react2.default.createElement('input', { name: 'goodRadio', type: 'radio', value: 'B' }),
-	        _react2.default.createElement('input', { name: 'goodRadio', type: 'radio', value: 'C' }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { name: 'goodRadio', type: 'checkbox', value: 'A' }),
-	        _react2.default.createElement('input', { name: 'goodRadio', type: 'checkbox', value: 'B' }),
-	        _react2.default.createElement('input', { name: 'goodRadio', type: 'checkbox', value: 'C' }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('textarea', { value: this.state.textareValue }),
+	        'div',
+	        null,
+	        _react2.default.createElement('input', { type: 'text', defaultValue: '123456', ref: 'myText' }),
 	        _react2.default.createElement(
 	          'button',
-	          { type: 'submit' },
-	          '确认提交'
+	          { onClick: this.clickHandle },
+	          'clickme'
 	        )
 	      );
 	    }
 	  }]);
 
-	  return MyFrom;
+	  return Event;
 	}(_react.Component);
 
-	(0, _reactDom.render)(_react2.default.createElement(MyFrom, null), document.getElementById('root'));
+	(0, _reactDom.render)(_react2.default.createElement(Event, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21698,54 +21519,37 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// import { render } from 'react-dom';
+	var RepeatLi = function (_Component) {
+	  _inherits(RepeatLi, _Component);
 
-	var SubMessage = function (_Component) {
-	  _inherits(SubMessage, _Component);
+	  function RepeatLi() {
+	    _classCallCheck(this, RepeatLi);
 
-	  function SubMessage() {
-	    _classCallCheck(this, SubMessage);
-
-	    return _possibleConstructorReturn(this, (SubMessage.__proto__ || Object.getPrototypeOf(SubMessage)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (RepeatLi.__proto__ || Object.getPrototypeOf(RepeatLi)).apply(this, arguments));
 	  }
 
-	  _createClass(SubMessage, [{
+	  _createClass(RepeatLi, [{
 	    key: 'render',
-
-	    // 这个地方报错，在webpack.config.js配置query，presets中加入"stage-0"，问题解决
 	    value: function render() {
-	      var message = [];
-	      var keyValue = 0;
-	      this.props.msg.forEach(function (item) {
-	        message.push(_react2.default.createElement(
-	          'p',
-	          { key: keyValue++ },
-	          ' 子组件说: ',
-	          item
-	        ));
-	      });
+	      var i = 0;
 	      return _react2.default.createElement(
-	        'div',
+	        'ol',
 	        null,
-	        message
+	        this.props.children.map(function (child) {
+	          return _react2.default.createElement(
+	            'li',
+	            { key: i++ },
+	            child
+	          );
+	        })
 	      );
 	    }
 	  }]);
 
-	  return SubMessage;
+	  return RepeatLi;
 	}(_react.Component);
-	// 默认的props只能写在类的外面才能通过编译，而且他的key必须跟传入的props的name一样，value类型也要一样。
-	// SubMessage.defaultProps = {
-	//   msg: ['没有传参，我是默认的参数'],
-	// };
 
-	SubMessage.defaultProps = {
-	  msg: ['没有传参，我是默认的参数']
-	};
-	SubMessage.propTypes = {
-	  msg: _react2.default.PropTypes.array.isRequired
-	};
-	exports.default = SubMessage;
+	exports.default = RepeatLi;
 
 /***/ }
 /******/ ]);

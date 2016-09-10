@@ -103,6 +103,7 @@ import SubMessage from './myComponet.jsx';
 //     super(props);
 //   }
 //   //  配置好后，state可以简单的这样初始化了
+//  //  像这样把类的实例属性用等号写在构造函数的外面，由es7 stage-0 提案支持
 //   state = {
 //     isVisable: true,
 //     titleMessage: 'hello, react!',

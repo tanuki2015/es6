@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 class SubMessage extends Component {
   // 这个地方报错，在webpack.config.js配置query，presets中加入"stage-0"，问题解决
+  // 这个static defaultProps是类的静态属性，只有es7的提案才支持。
+  // 那么问题来了，如果有两个实例，那意味着他们公用这个类上的defaultProps，这个也没法修改，只能在定义类的时候确定。
   static defaultProps = {
     msg: ['没有传参，我是默认的参数'],
   };
