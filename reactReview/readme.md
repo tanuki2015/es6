@@ -73,6 +73,30 @@ class HelloMessage extends Component {
 render(<HelloMessage name="John" />, document.getElementById('root'));
 
 ```
+## 嵌套组件
+问题：
+1. return返回的顶层元素只能有一个，而且必须用（）包起来
+2. 组件名字必须首字母大写，写子组件时一定注意，否则渲染出来是字符串。
+3. 一个文件只能定义一个组件，不像es5的写法可以多个。
 
+## 循环展开组件
+* render函数中正常写函数，可以引用组件
+* return的时候用花括号引用数组，会自动展开
+* 当子组件时数组是，它需要有一个key的属性，所以在push进数组时加入key=XXX+i 以示区别
 
-state 表示组件当前的状态，需要时自动重新渲染，也可调用this.setState()触发。
+## state 表示组件当前的状态，需要时自动重新渲染，也可调用this.setState()触发。
+*   用构造函数初始化state
+*   用this.state.XXX引用
+*   最重要的一点，添加点击事件的时候用箭头函数，才能保证this是正确的
+*   onClick={() => this.clickHandle()}
+*   或者用es7的::来绑定 onClick={::this.clickHandle}
+
+## 传递props给子组件
+问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
+
+如果ref改成一个函数，这个函数会在组件render时自动执行，这个ref的元素会作为参数传入函数
+
+## 表单和事件
+关于事件的代码，可以发现，当元素中使用了value时，就必须使用onChange方法。那多个元素设置了value，就得有多个onChange事件。
+
+这显然太笨了，于是，就有了下面的用ref获取元素节点的方法，可以一次直接得到这个元素及他的所有属性。

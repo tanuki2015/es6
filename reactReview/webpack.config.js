@@ -1,7 +1,7 @@
 // webpack.config.js
 module.exports = {
   // devtool: 'eval-source-map',
-  entry: './indexCase.jsx',
+  entry: './app.jsx',
   output: {
     filename: 'bundle.js',
   },

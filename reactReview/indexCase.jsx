@@ -22,16 +22,17 @@ import RepeatLi from './myCompLi.jsx';
 // 2 事件焦点
 // 今天碰到莫名其妙的问题，写一个简单的输入框就是现实不出来，怎么样都没发现问题，就是重写就好了，真是头疼啊jsx
 class Event extends Component {
-  clickHandle = (e) => {
-    this.refs.myText.focus();
-  }
+  // clickHandle = (e) => {
+  //   this.refs.myText.focus();
+  // }
   render() {
+    //  这里ref改成一个函数，这个函数会在组件render时自动执行，这个ref的元素会作为参数传入函数
     return (
       <div>
-        <input type="text" defaultValue="123456" ref="myText"/>
+        <input type="text" defaultValue="123456" ref={(comp) => { comp.focus(); }} />
         <button onClick={this.clickHandle}>clickme</button>
       </div>
-    )
+    );
   }
 }
 

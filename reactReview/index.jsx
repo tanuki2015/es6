@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import SubMessage from './myComponet.jsx';
 
 // render(
@@ -115,7 +115,7 @@ import SubMessage from './myComponet.jsx';
 //     ],
 //   };
 //
-//   clickHandle() {
+//   clickHandle(e) {
 //     this.setState({
 //       isVisable: !this.state.isVisable,
 //       clickCount: this.state.clickCount + 1,
@@ -127,7 +127,7 @@ import SubMessage from './myComponet.jsx';
 //     };
 //     return (
 //       <div>
-//         <h1 onClick={::this.clickHandle}> Hello {this.props.name} </h1>
+//         <h1 onClick={::this.clickHandle} ref="refMess"> Hello {this.props.name} </h1>
 //         <SubMessage msg={this.state.subMessage}/>
 //       </div>);
 //   }
@@ -140,58 +140,101 @@ import SubMessage from './myComponet.jsx';
 * 就得有多个onChange事件，这显然太笨了，于是，就有了下面的用ref获取元素节点的方法，可以一次直接
 * 得到这个元素及他的所有属性。
 */
-class MyFrom extends Component {
+// class MyFrom extends Component {
+//   state = {
+//     inputValue: 'input value',
+//     selectValue: 'A',
+//     radioValue: 'B',
+//     textareValue: 'some text here...',
+//   }
+//
+//   handleSubmit = (e) => {
+//     e.preventDefault(); // 停掉默认提交表单的动作
+//     console.log('form submitting...');
+//     console.log(e);
+//   }
+//
+//   handleInput = (e) => {
+//     this.setState({
+//       inputValue: e.target.value,
+//     })
+//   }
+//
+//   handleSelect = (e) => {
+//     this.setState({
+//       selectValue: e.target.value,
+//     })
+//   }
+//
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
+//         <br/>
+//         <select value={this.state.selectValue} onChange={this.handleSelect}>
+//           <option value="A">A</option>
+//           <option value="B">B</option>
+//           <option value="C">C</option>
+//           <option value="D">D</option>
+//           <option value="E">E</option>
+//         </select>
+//         <br/>
+//         <p>radio button</p>
+//         <input name="goodRadio" type="radio" value="A"/>
+//         <input name="goodRadio" type="radio" value="B"/>
+//         <input name="goodRadio" type="radio" value="C"/>
+//         <br/>
+//           <input name="goodRadio" type="checkbox" value="A"/>
+//           <input name="goodRadio" type="checkbox" value="B"/>
+//           <input name="goodRadio" type="checkbox" value="C"/>
+//         <br/>
+//         <textarea value={this.state.textareValue}></textarea>
+//         <button type="submit">确认提交</button>
+//       </form>
+//     )
+//   }
+// }
+// render(<MyFrom />, document.getElementById('root'));
+
+// 生命周期
+class HelloMessage extends Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
-    inputValue: 'input value',
-    selectValue: 'A',
-    radioValue: 'B',
-    textareValue: 'some text here...',
+    isVisable: true,
+    titleMessage: 'hello, react!',
+    clickCount: 0,
+    subMessage: [
+      '从父组件',
+      '传递给子组件',
+      '的一个字符串数组'
+    ],
+  };
+  componentWillMount() {
+    console.log('组件即将被装载');
   }
-
-  handleSubmit = (e) => {
-    e.preventDefault(); // 停掉默认提交表单的动作
-    console.log('form submitting...');
-    console.log(e);
+  componentDidMount() {
+    console.log('组件已经被装载');
+    console.log(ReactDOM.findDOMNode(this));
   }
-
-  handleInput = (e) => {
+  should
+  clickHandle(e) {
     this.setState({
-      inputValue: e.target.value,
-    })
+      isVisable: !this.state.isVisable,
+      clickCount: this.state.clickCount + 1,
+    });
   }
-
-  handleSelect = (e) => {
-    this.setState({
-      selectValue: e.target.value,
-    })
-  }
-
   render() {
+    const styleObj = {
+      display: this.state.isVisable ? 'block' : 'none',
+    };
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
-        <br/>
-        <select value={this.state.selectValue} onChange={this.handleSelect}>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-        </select>
-        <br/>
-        <p>radio button</p>
-        <input name="goodRadio" type="radio" value="A"/>
-        <input name="goodRadio" type="radio" value="B"/>
-        <input name="goodRadio" type="radio" value="C"/>
-        <br/>
-          <input name="goodRadio" type="checkbox" value="A"/>
-          <input name="goodRadio" type="checkbox" value="B"/>
-          <input name="goodRadio" type="checkbox" value="C"/>
-        <br/>
-        <textarea value={this.state.textareValue}></textarea>
-        <button type="submit">确认提交</button>
-      </form>
-    )
+      <div>
+        <h1 onClick={::this.clickHandle} ref="refMess"> Hello {this.props.name} </h1>
+        <SubMessage msg={this.state.subMessage}/>
+      </div>);
   }
 }
-render(<MyFrom />, document.getElementById('root'));
+
+render(<HelloMessage name="John" />, document.getElementById('root'));
