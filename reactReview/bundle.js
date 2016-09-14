@@ -21739,7 +21739,7 @@
 	          voteCount: item.voteCount
 	        });
 	      });
-
+	      console.log(questionsComp);
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'questionList' },
