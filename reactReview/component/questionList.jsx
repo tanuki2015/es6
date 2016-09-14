@@ -14,11 +14,9 @@ class QuestionList extends Component {
           voteCount={item.voteCount}
         />;
     });
-    console.log(questionsComp);
     return (
       <div id="questionList">
         {questionsComp}
-
       </div>
     );
   }

@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 
 class QuestionForm extends Component {
   render() {
+    let styleObj = {
+      display: this.props.isDispyForm ? 'block' : 'none',
+    };
     return (
-      <form className="clearfix" role="form">
+      <form style={styleObj} className="clearfix" role="form">
         <div className="form-group">
           <label htmlFor="question-title">问题</label>
           <input type="text" className="form-control" id="question-title" placeholder="问题的标题" />
@@ -13,7 +16,7 @@ class QuestionForm extends Component {
         </div>
         <div className="form-group pull-right">
           <button type="submit" className="btn btn-default">取消</button>
-          <button type="submit" className="btn btn-success">确认</button>
+          <button type="submit" className="btn btn-success" onClick={this.props.onToggleForm}>确认</button>
         </div>
       </form>
     );

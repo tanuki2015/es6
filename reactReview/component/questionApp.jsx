@@ -21,6 +21,13 @@ class Question extends Component {
         voteCount: 8,
       }
     ],
+    questionFormDisplay: false,
+  }
+
+  toggleQuestionForm = () => {
+    this.setState({
+      questionFormDisplay: !this.state.questionFormDisplay,
+    })
   }
 
   render() {
@@ -29,11 +36,11 @@ class Question extends Component {
         <div className="jumbotron text-center">
           <div className="container">
             <h1>React 问答</h1>
-            <ShowAddButton />
+            <ShowAddButton onToggleForm={this.toggleQuestionForm}/>
           </div>
         </div>
         <div className="container">
-          <QuestionForm />
+          <QuestionForm isDispyForm={this.state.questionFormDisplay} onToggleForm={this.toggleQuestionForm}/>
           <QuestionList questions={this.state.questions}/>
         </div>
       </div>

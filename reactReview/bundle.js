@@ -21523,7 +21523,12 @@
 	        title: 'JavaScript中的作用域scope',
 	        description: 'avaScript中的作用域scope 和上下文 context 是这门语言的独到之处，每个函数有不同的变量上下文和作用域。这些概念是JavaScript中一些强大的设计模式的后盾。在ES5规范里，我们可以遵循一个原则——每个function内的上下文this指向该function的调用方',
 	        voteCount: 8
-	      }]
+	      }],
+	      questionFormDisplay: false
+	    }, _this.toggleQuestionForm = function () {
+	      _this.setState({
+	        questionFormDisplay: !_this.state.questionFormDisplay
+	      });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -21544,13 +21549,13 @@
 	              null,
 	              'React 问答'
 	            ),
-	            _react2.default.createElement(_showAddButton2.default, null)
+	            _react2.default.createElement(_showAddButton2.default, { onToggleForm: this.toggleQuestionForm })
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'container' },
-	          _react2.default.createElement(_questionForm2.default, null),
+	          _react2.default.createElement(_questionForm2.default, { isDispyForm: this.state.questionFormDisplay, onToggleForm: this.toggleQuestionForm }),
 	          _react2.default.createElement(_questionList2.default, { questions: this.state.questions })
 	        )
 	      );
@@ -21600,7 +21605,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "button",
-	        { className: "btn btn-success", id: "add-question-btn" },
+	        { className: "btn btn-success", id: "add-question-btn", onClick: this.props.onToggleForm },
 	        "添加问题"
 	      );
 	    }
@@ -21615,7 +21620,7 @@
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21645,38 +21650,41 @@
 	  }
 
 	  _createClass(QuestionForm, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      var styleObj = {
+	        display: this.props.isDispyForm ? 'block' : 'none'
+	      };
 	      return _react2.default.createElement(
-	        "form",
-	        { className: "clearfix", role: "form" },
+	        'form',
+	        { style: styleObj, className: 'clearfix', role: 'form' },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "form-group" },
+	          'div',
+	          { className: 'form-group' },
 	          _react2.default.createElement(
-	            "label",
-	            { htmlFor: "question-title" },
-	            "问题"
+	            'label',
+	            { htmlFor: 'question-title' },
+	            '问题'
 	          ),
-	          _react2.default.createElement("input", { type: "text", className: "form-control", id: "question-title", placeholder: "问题的标题" })
+	          _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'question-title', placeholder: '问题的标题' })
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "form-group" },
-	          _react2.default.createElement("textarea", { className: "form-control", rows: 3, placeholder: "问题的描述", defaultValue: "" })
+	          'div',
+	          { className: 'form-group' },
+	          _react2.default.createElement('textarea', { className: 'form-control', rows: 3, placeholder: '问题的描述', defaultValue: "" })
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "form-group pull-right" },
+	          'div',
+	          { className: 'form-group pull-right' },
 	          _react2.default.createElement(
-	            "button",
-	            { type: "submit", className: "btn btn-default" },
-	            "取消"
+	            'button',
+	            { type: 'submit', className: 'btn btn-default' },
+	            '取消'
 	          ),
 	          _react2.default.createElement(
-	            "button",
-	            { type: "submit", className: "btn btn-success" },
-	            "确认"
+	            'button',
+	            { type: 'submit', className: 'btn btn-success', onClick: this.props.onToggleForm },
+	            '确认'
 	          )
 	        )
 	      );
@@ -21739,7 +21747,6 @@
 	          voteCount: item.voteCount
 	        });
 	      });
-	      console.log(questionsComp);
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'questionList' },
