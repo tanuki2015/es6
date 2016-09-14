@@ -30,6 +30,20 @@ class Question extends Component {
     })
   }
 
+  // 这是传给form的cb，传的时候要bind this才能用this来操作这个组件的state。（line60）
+  onNewQuestion(newQuestion) {
+    // 别忘记 let questionArr
+    let questionArr = this.state.questions;
+    newQuestion.key = questionArr.length + 1;
+    questionArr.push(newQuestion);
+    questionArr.sort((a, b) => {
+      return a.voteCount - b.voteCount;
+    });
+    this.setState({
+      questions: questionArr,
+    })
+  }
+
   render() {
     return (
       <div>
@@ -40,7 +54,11 @@ class Question extends Component {
           </div>
         </div>
         <div className="container">
-          <QuestionForm isDispyForm={this.state.questionFormDisplay} onToggleForm={this.toggleQuestionForm}/>
+          <QuestionForm
+            isDispyForm={this.state.questionFormDisplay}
+            onToggleForm={this.toggleQuestionForm}
+            onNewQuestion={this.onNewQuestion.bind(this)}
+            />
           <QuestionList questions={this.state.questions}/>
         </div>
       </div>

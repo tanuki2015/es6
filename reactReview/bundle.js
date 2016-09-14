@@ -21533,6 +21533,23 @@
 	  }
 
 	  _createClass(Question, [{
+	    key: 'onNewQuestion',
+
+
+	    // 这是传给form的cb，传的时候要bind this才能用this来操作这个组件的state。（line60）
+	    value: function onNewQuestion(newQuestion) {
+	      // 别忘记 let questionArr
+	      var questionArr = this.state.questions;
+	      newQuestion.key = questionArr.length + 1;
+	      questionArr.push(newQuestion);
+	      questionArr.sort(function (a, b) {
+	        return a.voteCount - b.voteCount;
+	      });
+	      this.setState({
+	        questions: questionArr
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -21555,7 +21572,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'container' },
-	          _react2.default.createElement(_questionForm2.default, { isDispyForm: this.state.questionFormDisplay, onToggleForm: this.toggleQuestionForm }),
+	          _react2.default.createElement(_questionForm2.default, {
+	            isDispyForm: this.state.questionFormDisplay,
+	            onToggleForm: this.toggleQuestionForm,
+	            onNewQuestion: this.onNewQuestion.bind(this)
+	          }),
 	          _react2.default.createElement(_questionList2.default, { questions: this.state.questions })
 	        )
 	      );
@@ -21632,6 +21653,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21652,17 +21677,36 @@
 	  _createClass(QuestionForm, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var styleObj = {
 	        display: this.props.isDispyForm ? 'block' : 'none'
 	      };
-	      function handleForm(e) {
+
+	      // 因为是在提交表单的事件中进行，所以要用箭头函数的调用方式（line27）绑定到元素得到e，
+	      // 但是在事件处理程序中又需要组件的this.refs,和this.props，没办法，只好作为参数分别传入
+	      function handleForm(e, refs, props) {
 	        e.preventDefault();
+	        // 填写表单不能为空
+	        if (!refs.title.value) {
+	          return;
+	        }
+	        // 生成表单数据
+	        var newQuestion = {
+	          key: '',
+	          title: refs.title.value,
+	          description: refs.description.value,
+	          voteCount: 0
+	        };
+	        refs.addQuestionForm.reset();
+	        // 传入的cb拿表单数据
+	        props.onNewQuestion(newQuestion);
 	      }
 
 	      return _react2.default.createElement(
 	        'form',
-	        { style: styleObj, className: 'clearfix', role: 'form', onSubmit: function onSubmit(e) {
-	            return handleForm(e);
+	        { ref: 'addQuestionForm', style: styleObj, className: 'clearfix', role: 'form', onSubmit: function onSubmit(e) {
+	            return handleForm(e, _this2.refs, _this2.props);
 	          } },
 	        _react2.default.createElement(
 	          'div',
@@ -21672,12 +21716,12 @@
 	            { htmlFor: 'question-title' },
 	            '问题'
 	          ),
-	          _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'question-title', placeholder: '问题的标题' })
+	          _react2.default.createElement('input', { ref: 'title', type: 'text', className: 'form-control', id: 'question-title', placeholder: '问题的标题' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'form-group' },
-	          _react2.default.createElement('textarea', { className: 'form-control', rows: 3, placeholder: '问题的描述', defaultValue: "" })
+	          _react2.default.createElement('textarea', { ref: 'description', className: 'form-control', rows: 3, placeholder: '问题的描述', defaultValue: "" })
 	        ),
 	        _react2.default.createElement(
 	          'div',
