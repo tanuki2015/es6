@@ -21655,9 +21655,15 @@
 	      var styleObj = {
 	        display: this.props.isDispyForm ? 'block' : 'none'
 	      };
+	      function handleForm(e) {
+	        e.preventDefault();
+	      }
+
 	      return _react2.default.createElement(
 	        'form',
-	        { style: styleObj, className: 'clearfix', role: 'form' },
+	        { style: styleObj, className: 'clearfix', role: 'form', onSubmit: function onSubmit(e) {
+	            return handleForm(e);
+	          } },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'form-group' },
@@ -21678,12 +21684,12 @@
 	          { className: 'form-group pull-right' },
 	          _react2.default.createElement(
 	            'button',
-	            { type: 'submit', className: 'btn btn-default' },
+	            { type: 'submit', className: 'btn btn-default', onClick: this.props.onToggleForm },
 	            '取消'
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { type: 'submit', className: 'btn btn-success', onClick: this.props.onToggleForm },
+	            { type: 'submit', className: 'btn btn-success' },
 	            '确认'
 	          )
 	        )

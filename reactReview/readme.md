@@ -91,10 +91,26 @@ render(<HelloMessage name="John" />, document.getElementById('root'));
 *   onClick={() => this.clickHandle()}
 *   或者用es7的::来绑定 onClick={::this.clickHandle}
 
+一个toggle现实表单的例子，因为e没有传进去，所以函数没有执行，因为这个表单被提交的时候才会有e，
+才有e.preventDefault。
+
+要像下面这样用箭头函数去执行这个handle函数才能传入e。
+```
+let handleForm = (e) => {
+  e.preventDefault();
+};
+
+return (
+  <form style={styleObj} className="clearfix" role="form" onSubmit={(e) => handleForm(e)}>
+  ......
+```
+
 ## 传递props给子组件
 问题：1 如果调用子组件的时候没有传参，为防止子组件中处理出错，用static defaultProps 解决
 
 如果ref改成一个函数，这个函数会在组件render时自动执行，这个ref的元素会作为参数传入函数
+
+传递props还可以用spread，在子组件直接用{...this.props}接受所有的props
 
 ## 表单和事件
 关于事件的代码，可以发现，当元素中使用了value时，就必须使用onChange方法。那多个元素设置了value，就得有多个onChange事件。
