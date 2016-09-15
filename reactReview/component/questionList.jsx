@@ -8,10 +8,12 @@ class QuestionList extends Component {
 
     let questionsComp = questions.map((item) => {
       return <QuestionItem
-          key={item.key}
-          title={item.title}
-          description={item.description}
-          voteCount={item.voteCount}
+        key={item.key}
+        questionKey={item.key}
+        title={item.title}
+        description={item.description}
+        voteCount={item.voteCount}
+        onVote={this.props.onVote}
         />;
     });
     return (

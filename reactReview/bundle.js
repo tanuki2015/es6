@@ -21517,12 +21517,12 @@
 	        key: 1,
 	        title: '什么是 JSX!',
 	        description: 'JSX 语法听上去很讨厌，但当真正使用的时候会发现，JSX 的写法在组件的组合和属性的传递上提供了非常灵活的解决方案。在学习本节的时候，希望读者在阅读的同时能够实际编码体验 JSX ，写代码的意思是真的要写.代.码',
-	        voteCount: 22
+	        voteCount: 6
 	      }, {
 	        key: 2,
 	        title: 'JavaScript中的作用域scope',
 	        description: 'avaScript中的作用域scope 和上下文 context 是这门语言的独到之处，每个函数有不同的变量上下文和作用域。这些概念是JavaScript中一些强大的设计模式的后盾。在ES5规范里，我们可以遵循一个原则——每个function内的上下文this指向该function的调用方',
-	        voteCount: 8
+	        voteCount: 3
 	      }],
 	      questionFormDisplay: false
 	    }, _this.toggleQuestionForm = function () {
@@ -21543,8 +21543,33 @@
 	      newQuestion.key = questionArr.length + 1;
 	      questionArr.push(newQuestion);
 	      questionArr.sort(function (a, b) {
-	        return a.voteCount - b.voteCount;
+	        return b.voteCount - a.voteCount;
 	      });
+	      this.setState({
+	        questions: questionArr
+	      });
+	    }
+
+	    // 传递给questionItem的投票handler
+
+	  }, {
+	    key: 'onVote',
+	    value: function onVote(questionKey, newCount) {
+	      // 拿到这一项index
+	      var questionArr = this.state.questions;
+	      var index = 0;
+	      for (var i = 0, len = questionArr.length; i < len; i++) {
+	        if (questionArr[i].key == questionKey) {
+	          index = i;
+	          break;
+	        }
+	      }
+	      // 更新voteCount
+	      questionArr[index].voteCount = newCount;
+	      questionArr.sort(function (a, b) {
+	        return b.voteCount - a.voteCount;
+	      });
+	      console.log(questionArr);
 	      this.setState({
 	        questions: questionArr
 	      });
@@ -21577,7 +21602,7 @@
 	            onToggleForm: this.toggleQuestionForm,
 	            onNewQuestion: this.onNewQuestion.bind(this)
 	          }),
-	          _react2.default.createElement(_questionList2.default, { questions: this.state.questions })
+	          _react2.default.createElement(_questionList2.default, { questions: this.state.questions, onVote: this.onVote.bind(this) })
 	        )
 	      );
 	    }
@@ -21786,15 +21811,19 @@
 	  _createClass(QuestionList, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var questions = this.props.questions;
 	      if (!Array.isArray(questions)) throw new Error('this.props.questions 必需是数组');
 
 	      var questionsComp = questions.map(function (item) {
 	        return _react2.default.createElement(_questionItem2.default, {
 	          key: item.key,
+	          questionKey: item.key,
 	          title: item.title,
 	          description: item.description,
-	          voteCount: item.voteCount
+	          voteCount: item.voteCount,
+	          onVote: _this2.props.onVote
 	        });
 	      });
 	      return _react2.default.createElement(
@@ -21844,8 +21873,24 @@
 	  }
 
 	  _createClass(QuestionItem, [{
+	    key: "voteUp",
+	    value: function voteUp() {
+	      // 因为拿不到key，所以在父组件questionList中用questionKey把key传过来用
+	      var newCount = parseInt(this.props.voteCount) + 1;
+	      this.props.onVote(this.props.questionKey, newCount);
+	    }
+	  }, {
+	    key: "voteDown",
+	    value: function voteDown() {
+	      // 因为拿不到key，所以在父组件questionList中用questionKey把key传过来用
+	      var newCount = parseInt(this.props.voteCount) - 1;
+	      this.props.onVote(this.props.questionKey, newCount);
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "questionBody clearfix" },
@@ -21854,7 +21899,9 @@
 	          { className: "questionBtn" },
 	          _react2.default.createElement(
 	            "button",
-	            { className: "btn btn-default questionBtn" },
+	            { className: "btn btn-default questionBtn", onClick: function onClick() {
+	                _this2.voteUp();
+	              } },
 	            _react2.default.createElement("span", { className: "glyphicon glyphicon-chevron-up" }),
 	            _react2.default.createElement("br", null),
 	            _react2.default.createElement(
@@ -21865,7 +21912,9 @@
 	          ),
 	          _react2.default.createElement(
 	            "button",
-	            { className: "btn btn-default questionBtn" },
+	            { className: "btn btn-default questionBtn", onClick: function onClick() {
+	                _this2.voteDown();
+	              } },
 	            _react2.default.createElement("span", { className: "glyphicon glyphicon-chevron-down" })
 	          )
 	        ),
