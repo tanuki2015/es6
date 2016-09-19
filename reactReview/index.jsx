@@ -212,6 +212,8 @@ class HelloMessage extends Component {
     ],
   };
   componentWillMount() {
+    console.log(React);
+    console.log(ReactDOM);
     console.log('组件即将被装载');
   }
   componentDidMount() {

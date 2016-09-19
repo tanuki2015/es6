@@ -24,7 +24,8 @@ class Question extends Component {
     questionFormDisplay: false,
   }
 
-  toggleQuestionForm = () => {
+  toggleQuestionForm = (e) => {
+    e.preventDefault();
     this.setState({
       questionFormDisplay: !this.state.questionFormDisplay,
     })

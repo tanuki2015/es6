@@ -21525,7 +21525,8 @@
 	        voteCount: 3
 	      }],
 	      questionFormDisplay: false
-	    }, _this.toggleQuestionForm = function () {
+	    }, _this.toggleQuestionForm = function (e) {
+	      e.preventDefault();
 	      _this.setState({
 	        questionFormDisplay: !_this.state.questionFormDisplay
 	      });
