@@ -1,3 +1,10 @@
+// 一个测试工具函数
+function assert(condition, message) {
+  if (!condition) {
+    console.log(message);
+  }
+}
+
 // 求出现次数最多的字符和次数
 // let str = 'abcabcabc def def lmnlnmlnm';
 
@@ -71,15 +78,19 @@
 // console.log(maximum(str));
 
 // 解析查询字符串
-let queryStr = 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=monline_4_dg&wd=es6';
+// const queryStr = 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=monline_4_dg&wd=es6';
+//
+// function queryString(str) {
+//   const reg = /([^?&=]+)=([^?&=]+)/g;
+//   const qsObj = {};
+//   str.replace(reg, (...rest) => {
+//     qsObj[rest[1]] = rest[2];
+//   });
+//   return qsObj;
+// }
+//
+// console.log(queryString(queryStr));
 
-function queryString (str) {
-  const reg = /([^?&=]+)=([^?&=]+)/g;
-  const qsObj = {};
-  str.replace(reg, (...rest) => {
-    qsObj[rest[1]] = rest[2];
-  });
-  return qsObj;
-}
 
-console.log(queryString(queryStr));
+let a = 2;
+assert(a==1, 'a is not equal 1');
