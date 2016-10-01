@@ -2,9 +2,28 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>test 套件</title>
+    <title>test suite</title>
+    <style media="screen">
+      #results li.pass{ color: green; }
+      #results li.fail { color: red; }
+    </style>
   </head>
   <body>
-    <script src="./littleCase.js" charset="utf-8"></script>
+    <ul id="results"></ul>
+    <script type="text/javascript">
+      function assert(value, desc){
+        let li = document.createElement('li');
+        li.className = value ? 'pass' : 'fail';
+        li.appendChild(document.createTextNode(desc));
+        document.getElementById('results').appendChild(li);
+      }
+      window.onload = function() {
+        assert(true, 'the test suite is running.');
+        assert(false, 'fail!');
+      }
+      // 简单的东西居然出现两个低级错误，className拼写错误calssName导致样式无效
+      // style表中一个语句结尾居然习惯性的加上了;号，导致只有第一个条样式生效
+    </script>
+    <!-- <script src="./littleCase.js" charset="utf-8"></script> -->
   </body>
 </html>
