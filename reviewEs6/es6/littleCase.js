@@ -91,6 +91,102 @@ function assert(condition, message) {
 //
 // console.log(queryString(queryStr));
 
+// 递归的应用
+// 回文检测
+let str = 'racecar';
+function isPalindrome(text) {
+  if (text.length <= 1) return true;
+  if (text.charAt(0) !== text.charAt(text.length - 1)) return false;
+  return isPalindrome(text.substr(1, text.length - 2));
+}
+console.log(isPalindrome(str));
 
-let a = 2;
-assert(a==1, 'a is not equal 1');
+// 递归发声
+// function chirp(n) {
+//   if (n > 1) {
+//     return chirp(n-1) + '-chirp';
+//   }
+//
+//   return 'chirp';
+// }
+
+// 改进一下
+// function chirp(n) {
+//   return n > 1 ? chirp(n-1) + '-chirp' : 'chirp';
+// }
+
+// 放到object里面
+// const ninja = {
+//   chirp(n) {
+//     return n > 1 ? chirp(n-1) + '-chirp' : 'chirp';
+//   },
+// };
+
+// 用this解决引用丢失的问题
+const ninja = {
+  chirp(n) {
+    return n > 1 ? this.chirp(n-1) + '-chirp' : 'chirp';
+  },
+};
+
+console.log(ninja.chirp(3));
+
+// 存储一组函数
+const store = {
+  nextId: 1,
+  catch: {},
+
+  add(fn) {
+    if (!fn.id) {
+      fn.id = store.nextId++;
+      store.catch[fn.id] = fn;
+      return true;
+    }
+    return false;
+  },
+
+};
+
+function chirp(n) {
+  return n > 1 ? chirp(n-1) + '-chirp' : 'chirp';
+}
+
+console.log(store);
+store.add(chirp);
+
+// 自己写一遍找字符串
+function mostChar(str) {
+  // const reg = /[^\b\s\n]/g;
+  // const result = {};
+  //
+  // str.replace(reg, char => {
+  //   if (!result[char]) {
+  //     result[char] = 1;
+  //   } else {
+  //     result[char]++;
+  //   }
+  // });
+
+  // replace可以被代替如下：
+  const strArr = str.split('');
+  const result = {};
+
+  strArr.forEach(char => {
+    if (!result[char]) {
+      result[char] = 1;
+    } else {
+      result[char]++;
+    }
+  });
+
+  let maxCount = 0;
+  let maxChar = '';
+  for (const char in result) {
+    if (result[char] > maxCount) {
+      maxCount = result[char];
+      maxChar = char;
+    }
+  }
+
+  return `${maxCount}  ${maxChar}`;
+}

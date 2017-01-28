@@ -42,168 +42,98 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!*********************!*\
-  !*** ./es6/main.js ***!
-  \*********************/
 /***/ function(module, exports) {
 
 	'use strict';
 	
-	var _obj;
+	// let [a, b] = [1, 9];
+	// [a, b] = [b, a];
+	// console.log(a, b);
 	
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	// function withArgs(a = 1, b = 2) {
+	//   return a + b;
+	// }
+	//
+	// console.log(withArgs());
+	// console.log(withArgs(4, 5));
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	// 交换变量值
-	var a = 1;
-	var b = 2;
-	var _ref = [b, a];
-	a = _ref[0];
-	b = _ref[1];
-	
-	console.log(a, b);
-	
-	// 预定义函数的参数
-	function withArgs() {
-	  var c = arguments.length <= 0 || arguments[0] === undefined ? 10 : arguments[0];
-	  var d = arguments.length <= 1 || arguments[1] === undefined ? 20 : arguments[1];
-	
-	  return c + d;
-	}
-	console.log(withArgs(5, 6));
-	
-	// 快速取函数返回值
-	function returnArgs() {
-	  return [1, 2, 3];
-	}
-	
-	var _returnArgs = returnArgs();
-	
-	var _returnArgs2 = _slicedToArray(_returnArgs, 3);
-	
-	var e = _returnArgs2[0];
-	var f = _returnArgs2[1];
-	var g = _returnArgs2[2];
-	
-	console.log(e, f, g);
+	// function returnValues() {
+	//   return [1, 2, 3];
+	// }
+	//
+	// const [a, b, c] = returnValues();
+	//
+	// console.log(a, b, c);
 	
 	// 取json数据
-	var jsonData = {
-	  id: 42,
-	  status: 'ok',
-	  data: [867, 5309]
-	};
+	// const jsonData = {
+	//   id: 11,
+	//   status: 'no',
+	//   data: [2222, 333],
+	// };
+	//
+	// const { id, status, data: number } = jsonData;
+	// console.log(id, status, number);
 	
-	var id = jsonData.id;
-	var status = jsonData.status;
-	var number = jsonData.data;
-	
-	console.log(id, status, number);
-	
-	// 预定义对象参数
-	function objectArgs() {
-	  var name = arguments.length <= 0 || arguments[0] === undefined ? 'fff' : arguments[0];
-	  var sayHi = arguments.length <= 1 || arguments[1] === undefined ? function () {
-	    return console.log('hi');
-	  } : arguments[1];
-	
-	  console.log(name, sayHi());
-	}
-	objectArgs();
-	
-	// spread用法,1调用时展开数组
-	var arr1 = [23, 45, 66, 78, 1, 66, 78, 1, 1, 9];
-	console.log(Math.min.apply(Math, arr1));
-	
-	// 2定义函数时, 用数组接受所有内容
-	function spr() {
-	  for (var _len = arguments.length, num = Array(_len), _key = 0; _key < _len; _key++) {
-	    num[_key] = arguments[_key];
-	  }
-	
-	  num.forEach(function (item) {
-	    return console.log(item);
-	  });
-	}
-	spr(arr1);
-	
-	// 函数的简写
-	var obj2 = {
-	  name: 'obj2',
-	  sayHi: function sayHi() {
-	    console.log('hi, I am a Concise method!');
-	  }
-	};
-	console.log(obj2.name, obj2.sayHi());
-	
-	// 对象的属性名可以被计算出来
-	var propName = 'name';
-	var obj3 = (_obj = {}, _defineProperty(_obj, propName, 'nicolas'), _defineProperty(_obj, 'sayHi', function sayHi() {
-	  return 'hi';
-	}), _obj);
-	console.log(obj3.name);
-	// for (let prop in obj3) {
-	//   if (obj3.hasOwnProperty(prop)) {
-	//     console.log(prop);
-	//   }
+	// const arr1 = [2, 4, 1, 6, 99, 54];
+	// console.log(Math.max(...arr1));
+	//
+	// function show(...args) {
+	//   args.forEach((item) => console.log(item));
 	// }
-	// 换成Object.keys方法实现，(eslint不报错)
-	var objKey = { name: 'xxff', age: 99 };
-	var objKeyArr = Object.keys(objKey);
-	objKeyArr.forEach(function (key) {
-	  return console.log(key);
-	});
+	// show(...arr1);
 	
-	console.log('-------------Object的keys, values, entries 方法----------------');
-	var obj = { a: 1, b: 2, c: 3 };
-	var keys = Object.keys;
-	var values = Object.values;
-	var entries = Object.entries; // 从Object对象取到这三个方法
-	// 好吧，只有stage-4才支持values，entries，目前只出了stage-3
+	// const obj1 = {
+	//   name: 'xf',
+	//   age: 18,
+	// };
+	// const obj2 = {
+	//   name: 'ff',
+	//   age: 80,
+	//   sayHi() {
+	//     console.log(`hi ${this.name}`);
+	//   },
+	// };
+	// obj2.sayHi();
+	// console.log(obj1 === obj2);
+	//
+	// const obj3 = obj1;
+	// console.log(Object.is(obj1, obj3));
 	
-	var _iteratorNormalCompletion = true;
-	var _didIteratorError = false;
-	var _iteratorError = undefined;
+	// const arr1 = [1, 2, 3, 4, 4, 3, 2, 1];
+	// const aSet = new Set(arr1);
+	// const arr2 = Array.from(aSet);
+	// console.log(arr2);
 	
-	try {
-	  for (var _iterator = keys(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	    var key = _step.value;
+	// console.log([...new Set(arr1)]);
 	
-	    console.log(key);
-	  }
+	// 解析查询字符串
+	var queryStr = 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=monline_4_dg&wd=es6';
+	//
+	// function queryString(str) {
+	//   const reg = /([^?&=]+)=([^?&=]+)/g;
+	//   const qsObj = {};
+	//   str.replace(reg, (...rest) => {
+	//     qsObj[rest[1]] = rest[2];
+	//   });
+	//   return qsObj;
+	// }
+	//
+	// console.log(queryString(queryStr));
 	
-	  // for (let value of values(obj)){
-	  //   console.log(value);
-	  // }
-	  //
-	  // for (let entry of entries(obj)){
-	  //   console.log(entry);
-	  // }
-	
-	  // Object.is()查看对象是否相等
-	} catch (err) {
-	  _didIteratorError = true;
-	  _iteratorError = err;
-	} finally {
-	  try {
-	    if (!_iteratorNormalCompletion && _iterator.return) {
-	      _iterator.return();
+	function queryString(str) {
+	  var reg = /([^?&=]+)=([^?&=]+)/g;
+	  var qsObj = {};
+	  str.replace(reg, function () {
+	    for (var _len = arguments.length, rest = Array(_len), _key = 0; _key < _len; _key++) {
+	      rest[_key] = arguments[_key];
 	    }
-	  } finally {
-	    if (_didIteratorError) {
-	      throw _iteratorError;
-	    }
-	  }
+	
+	    qsObj[rest[1]] = rest[2];
+	  });
+	  return qsObj;
 	}
-	
-	console.log(Object.is(6, 6));
-	console.log(Object.is(NaN, NaN));
-	
-	// 利用set Array.from 实现数组去重
-	var arr1Set = new Set(arr1); // set结构去重
-	var distinctArr = Array.from(arr1Set); // Array.from转换为数组
-	console.log(distinctArr);
+	console.log(queryString(queryStr));
 
 /***/ }
 /******/ ]);
