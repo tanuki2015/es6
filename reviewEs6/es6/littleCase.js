@@ -190,3 +190,40 @@ function mostChar(str) {
 
   return `${maxCount}  ${maxChar}`;
 }
+
+// 对象的结构赋值 取值到自定义的变量名
+// 常规方式：
+const object = {
+  a: 1,
+  b: 3,
+  c: 5,
+  arr: [6,7,8],
+}
+
+let {a, b, c, arr} = object;
+
+console.log(a, b, c, arr);
+
+// 自定义变量名
+let {a: mya, b: myb, c: myc, arr: myArr} = object;
+console.log(mya,myb,myc,myArr);
+
+// 箭头函数的this
+
+function outer() {
+  console.log(this.id);
+
+  const inner = () => {
+    console.log(this.id);
+  };
+  inner();
+}
+
+const obj = {
+  id: 'obj',
+  fn: outer,
+};
+
+outer();
+obj.fn();
+outer.call(obj);
